@@ -1,0 +1,92 @@
+# PATH / Homebrew / Binaries
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# Prompt (Starship)
+eval "$(starship init zsh)"
+
+# Node Version Manager (fnm)
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+# Fuzzy Finder (fzf)
+source <(fzf --zsh)
+
+# Autosuggestions / Syntax Highlighting
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# History
+HISTFILE="$HOME/.zhistory"
+SAVEHIST=1000
+HISTSIZE=999
+
+setopt share_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_verify
+
+# Keybindings (history search on arrows)
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+
+# Modern CLI replacements
+
+# eza as ls
+alias ls="eza --icons=auto"
+
+# zoxide as cd (use cd instead of z)
+eval "$(zoxide init --cmd cd zsh)"
+
+# the fuck
+eval $(thefuck --alias)
+
+# vscode
+v() {
+  if [[ $# -eq 0 ]]; then
+    code .
+  else
+    code "$@"
+  fi
+}
+
+z() {
+  if [[ $# -eq 0 ]]; then
+    zed .
+  else
+    zed "$@"
+  fi
+}
+
+a() {
+  if [[ $# -eq 0 ]]; then
+    antigravity .
+  else
+    antigravity "$@"
+  fi
+}
+
+alias cx="codex"
+alias cc="claude"
+alias oc="openclaw"
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+# Added by Antigravity
+export PATH="/Users/sayori/.antigravity/antigravity/bin:$PATH"
+
+# Added by ghcup
+[ -f "/Users/sayori/.ghcup/env" ] && . "/Users/sayori/.ghcup/env" # ghcup-envexport PATH="$HOME/.local/bin:$PATH"
+
+# Zsh Completion System，OpenClaw completion needs it
+autoload -Uz compinit && compinit
+
+# OpenClaw Completion
+source "/Users/sayori/.openclaw/completions/openclaw.zsh"
