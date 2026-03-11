@@ -16,6 +16,7 @@ config.automatically_reload_config = true
 -- Keybindings (CMD-based)
 -- ban default keys, only apply my needs
 config.disable_default_key_bindings = true
+config.disable_default_mouse_bindings = false
 
 local SPLIT_PERCENT = 50
 local RESIZE_STEP = 3
@@ -65,51 +66,9 @@ config.keys = {
     { key = "UpArrow",    mods = "CMD|CTRL",  action = act.AdjustPaneSize { "Up", RESIZE_STEP } },
 }
 
--- Hyperlink rules: CMD+点击打开链接/文件
-config.hyperlink_rules = wezterm.default_hyperlink_rules()
-
--- 添加文件路径识别规则（绝对路径）
-table.insert(config.hyperlink_rules, {
-    regex = [[(/[^\s:]+)(?::(\d+))?(?::(\d+))?]],
-    format = "file://$1",
-    highlight = 1,
-})
-
--- 鼠标绑定：CMD+点击打开链接
-config.mouse_bindings = {
-    -- CMD+点击：仍然打开链接
-    {
-        event = { Up = { streak = 1, button = "Left" } },
-        mods = "CMD",
-        action = act.OpenLinkAtMouseCursor,
-    },
-
-    -- 普通单击/拖选结束：不再把选择写进剪贴板；但如果点到链接仍可打开
-    -- 这相当于把默认的 CompleteSelectionOrOpenLinkAtMouseCursor(...Clipboard...) 改掉，只保留 OpenLinkAtMouseCursor
-    {
-        event = { Up = { streak = 1, button = "Left" } },
-        mods = "NONE",
-        action = act.OpenLinkAtMouseCursor,
-    },
-
-    -- 双击/三击：仍然会选中单词/整行，但不执行“复制到剪贴板”
-    {
-        event = { Up = { streak = 2, button = "Left" } },
-        mods = "NONE",
-        action = act.Nop,
-    },
-    {
-        event = { Up = { streak = 3, button = "Left" } },
-        mods = "NONE",
-        action = act.Nop,
-    },
-}
-
-
+-- WezTerm Theme: Obsidian「custom」
 config.window_background_opacity = 0.9
 config.macos_window_background_blur = 20
-
--- WezTerm Theme: Obsidian「custom」
 
 config.colors = {
     foreground = "#E0E0E0",
