@@ -30,6 +30,8 @@
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply sayoriqwq
 ```
 
+日常使用清单见 [use.md](./use.md)。
+
 ## 致谢
 
 目录组织参考了 [Innei/dotfiles](https://github.com/Innei/dotfiles) 的分类思路。
