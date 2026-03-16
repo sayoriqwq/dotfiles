@@ -33,10 +33,6 @@ setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_verify
 
-# Keybindings (history search on arrows)
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
-
 # Modern CLI replacements
 
 # eza as ls
@@ -44,6 +40,22 @@ alias ls="eza --icons=auto"
 
 # zoxide as cd (use cd instead of z)
 eval "$(zoxide init --cmd cd zsh)"
+
+# atuin
+if [ -f "$HOME/.atuin/bin/env" ]; then
+  . "$HOME/.atuin/bin/env"
+fi
+
+if command -v atuin >/dev/null 2>&1; then
+  eval "$(atuin init zsh)"
+fi
+
+# Keybindings
+# zsh history
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+# atuin history search
+bindkey '^[[1;5A' atuin-up-search
 
 # the fuck
 eval $(thefuck --alias)
@@ -76,8 +88,6 @@ a() {
 alias cx="codex"
 alias cc="claude"
 alias oc="openclaw"
-
-[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
 # Added by Antigravity
 export PATH="/Users/sayori/.antigravity/antigravity/bin:$PATH"
