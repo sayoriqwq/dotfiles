@@ -16,6 +16,13 @@
 | `~/.zshrc` | `dot_zshrc` |
 | `~/.wezterm.lua` | `dot_wezterm.lua` |
 | `~/.config/starship.toml` | `dot_config/starship.toml` |
+| `~/.config/atuin/config.toml` | `dot_config/atuin/config.toml` |
+
+## 特殊处理
+
+- `dot_config/ghostty/config` 会保留在仓库里
+- `~/.config/ghostty/config` 当前被 `.chezmoiignore` 忽略，不会默认下发
+- Ghostty 目前按 zero-config 模式使用，只有在明确要恢复托管配置时才解除忽略
 
 ## 推荐工作流
 
@@ -92,6 +99,7 @@ chezmoi managed
 
 - WezTerm: 用 `chezmoi edit ~/.wezterm.lua` 修改
 - Starship: 用 `chezmoi edit ~/.config/starship.toml` 修改
+- Atuin: 用 `chezmoi edit ~/.config/atuin/config.toml` 修改
 - Git: 用 `chezmoi edit ~/.gitconfig` 修改
 - Zsh: 用 `chezmoi edit ~/.zshrc` 修改
 

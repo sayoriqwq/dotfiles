@@ -11,8 +11,10 @@
 | Terminal | [WezTerm](https://wezfurlong.org/wezterm/) |
 | 包管理 | Homebrew |
 | Node 版本 | fnm |
-| 模糊搜索 | fzf |
-| 现代 CLI | eza (ls), zoxide (cd), thefuck |
+| 历史与筛选 | atuin, fzf |
+| 导航与文件 | zoxide, eza, fd, bat, yazi |
+| 搜索与 Diff | rg, delta, jq |
+| 其他 | thefuck, mise（已安装，暂未纳入基线） |
 
 ## 配置清单
 
@@ -20,6 +22,7 @@
 |------|---------|------|
 | Shell | `~/.zshrc` | PATH、插件、别名 |
 | Prompt | `~/.config/starship.toml` | Starship 提示符主题 |
+| History | `~/.config/atuin/config.toml` | Atuin 历史搜索配置 |
 | Git | `~/.gitconfig` | Git 用户信息 |
 | Terminal | `~/.wezterm.lua` | 主题、快捷键、窗格管理 |
 
@@ -31,6 +34,10 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply sayoriqwq
 ```
 
 日常使用清单见 [use.md](./use.md)。
+
+CLI 工具速查见 [CLI-tools.md](./CLI-tools.md)。
+
+当前终端工具现状见 [docs/superpowers/2026-03-17-terminal-tools-current-state.md](./docs/superpowers/2026-03-17-terminal-tools-current-state.md)。
 
 ## 致谢
 

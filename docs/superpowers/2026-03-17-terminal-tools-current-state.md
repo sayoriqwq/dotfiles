@@ -75,6 +75,7 @@ These tools are installed and part of the current interactive workflow:
 - `~/.zshrc` from `dot_zshrc`
 - `~/.wezterm.lua` from `dot_wezterm.lua`
 - `~/.config/starship.toml` from `dot_config/starship.toml`
+- `~/.config/atuin/config.toml` from `dot_config/atuin/config.toml`
 
 ### Ghostty handling
 
@@ -84,23 +85,20 @@ These tools are installed and part of the current interactive workflow:
 
 This keeps the previous Ghostty config available for rollback without making Ghostty part of the default managed setup.
 
-## Important Drift Note
+## Atuin Managed State
 
-`atuin` is active in the current local shell, but that activation has not yet been captured in `dot_zshrc`.
+`atuin` is now part of the managed terminal baseline.
 
-Observed state on this machine:
+Managed behavior:
 
-- local interactive `zsh` resolves `atuin`
-- local target `~/.zshrc` contains:
-  - `. "$HOME/.atuin/bin/env"`
-  - `eval "$(atuin init zsh)"`
-- repo source `dot_zshrc` does not yet contain those lines
-
-So the machine is already using `atuin`, but the repo has not fully absorbed that shell integration yet.
+- `dot_zshrc` conditionally loads `~/.atuin/bin/env` when present
+- `dot_zshrc` initializes `atuin` only when the command is available
+- `dot_config/atuin/config.toml` keeps the shell history search on `daemon-fuzzy`
+- `atuin` daemon autostart is enabled
 
 ## Current Conclusions
 
-1. `atuin` is the only clear must-have addition to the shell workflow.
+1. `atuin` is the only clear must-have addition that has now been migrated into the managed shell workflow.
 2. `fd` and `bat` are useful daily interactive upgrades and are now part of the practical tool stack.
 3. `mise` is installed, but not necessary for the current baseline because the workflow is mainly latest-version Node full-stack work.
 4. `direnv` is not a baseline need for the current project mix because key projects already load `.env` through framework or script-level mechanisms.
