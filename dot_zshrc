@@ -1,29 +1,31 @@
-# PATH / Homebrew / Binaries
+# =========================
+# PATH / 环境变量
+# =========================
 export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 
-# pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
-# Prompt (Starship)
+# =========================
+# Prompt
+# =========================
 eval "$(starship init zsh)"
 
-# Node Version Manager (fnm)
-eval "$(fnm env --use-on-cd --shell zsh)"
+# =========================
+# Runtime / Version Manager
+# =========================
+# mise
+eval "$(/opt/homebrew/bin/mise activate zsh)"
 
-# Fuzzy Finder (fzf)
-source <(fzf --zsh)
-
+# =========================
+# Shell 插件
+# =========================
 # Autosuggestions / Syntax Highlighting
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# =========================
 # History
+# =========================
 HISTFILE="$HOME/.zhistory"
 SAVEHIST=1000
 HISTSIZE=999
@@ -33,10 +35,11 @@ setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_verify
 
-# Modern CLI replacements
-
-# eza as ls
-alias ls="eza --icons=auto"
+# =========================
+# Modern CLI replacements / 工具初始化
+# =========================
+# Fuzzy Finder (fzf)
+source <(fzf --zsh)
 
 # zoxide as cd (use cd instead of z)
 eval "$(zoxide init --cmd cd zsh)"
@@ -50,16 +53,28 @@ if command -v atuin >/dev/null 2>&1; then
   eval "$(atuin init zsh)"
 fi
 
-# Keybindings
-# zsh history
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
-# atuin history search
-bindkey '^[[1;5A' atuin-up-search
-
 # the fuck
 eval $(thefuck --alias)
 
+# =========================
+# Aliases
+# =========================
+# eza as ls
+alias ls="eza --icons=auto"
+
+# =========================
+# Keybindings
+# =========================
+# zsh history
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+
+# atuin history search
+bindkey '^[[1;5A' atuin-up-search
+
+# =========================
+# Custom Functions
+# =========================
 # vscode
 v() {
   if [[ $# -eq 0 ]]; then
@@ -77,26 +92,16 @@ z() {
   fi
 }
 
-a() {
-  if [[ $# -eq 0 ]]; then
-    antigravity .
-  else
-    antigravity "$@"
-  fi
-}
-
-alias cx="codex"
-alias cc="claude"
-alias oc="openclaw"
-
-# Added by Antigravity
-export PATH="/Users/sayori/.antigravity/antigravity/bin:$PATH"
-
+# =========================
+# Language / Toolchain
+# =========================
 # Added by ghcup
-[ -f "/Users/sayori/.ghcup/env" ] && . "/Users/sayori/.ghcup/env" # ghcup-envexport PATH="$HOME/.local/bin:$PATH"
+[ -f "/Users/sayori/.ghcup/env" ] && . "/Users/sayori/.ghcup/env"
 
+# =========================
+# Completion
+# =========================
+# OpenClaw Completion
 # Zsh Completion System，OpenClaw completion needs it
 autoload -Uz compinit && compinit
-
-# OpenClaw Completion
 source "/Users/sayori/.openclaw/completions/openclaw.zsh"

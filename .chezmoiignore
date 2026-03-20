@@ -1,5 +1,6 @@
 # 仓库文档只保留在 source repo，不写入家目录。
 *.md
+!HOME.md
 docs/
 # Ghostty 默认保持 zero-config sidecar。
 .config/ghostty/config

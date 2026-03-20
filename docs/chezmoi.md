@@ -12,10 +12,12 @@
 | `~/.hushlogin` | `create_empty_dot_hushlogin` | 静默登录提示 |
 | `~/.config/starship.toml` | `dot_config/starship.toml` | Starship 配置 |
 | `~/.config/atuin/config.toml` | `dot_config/atuin/config.toml` | Atuin 配置 |
+| `~/HOME.md` | `HOME.md` | Home 顶层索引文档 |
 
 ## 忽略路径
 
-- `*.md` 和 `docs/`：仓库文档，只保留在 repo 内
+- `*.md` 和 `docs/`：仓库文档默认只保留在 repo 内
+- `HOME.md`：作为例外单独纳入 `chezmoi` 管理
 - `dot_config/ghostty/config` 对应的 `~/.config/ghostty/config`：默认忽略
 
 ## 日常工作流
@@ -35,6 +37,13 @@ chezmoi diff -- ~/.wezterm.lua
 chezmoi diff -- ~/.wezterm.lua
 chezmoi re-add ~/.wezterm.lua
 chezmoi diff -- ~/.wezterm.lua
+```
+
+把现有目标文件纳入管理：
+
+```bash
+chezmoi add ~/HOME.md
+chezmoi diff -- ~/HOME.md
 ```
 
 查看当前受管文件：

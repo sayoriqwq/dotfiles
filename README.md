@@ -7,6 +7,7 @@
 - Terminal: [WezTerm](https://wezfurlong.org/wezterm/)
 - Shell: Zsh
 - Dotfiles manager: `chezmoi`
+- Node.js / Bun manager: `mise`
 - Ghostty: zero-config sidecar，不默认托管配置
 
 ## 初始化
@@ -20,4 +21,4 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply sayoriqwq
 - [docs/chezmoi.md](./docs/chezmoi.md): 受管文件、日常工作流、忽略策略
 - [docs/terminal-current-state.md](./docs/terminal-current-state.md): 当前终端工具基线与采用结论
 
-仓库文档只保留在 repo 内，已通过 `.chezmoiignore` 排除，不会在 `chezmoi apply` 时写入 `~`。
+仓库文档默认只保留在 repo 内，已通过 `.chezmoiignore` 排除，不会在 `chezmoi apply` 时写入 `~`。当前唯一例外是 `~/HOME.md`，它由 `chezmoi` 单独接管。

@@ -24,7 +24,8 @@
 - 保持 Zsh 为默认 shell
 - Ghostty 目前是 zero-config sidecar，不要默认恢复其托管配置
 - 不要重新引入 Kaku
-- `mise` 和 `direnv` 当前不是默认基线，除非用户明确要求，不要把它们写成必需项
+- `mise` 是当前 Node.js 和 Bun 的基线管理方式
+- `direnv` 当前不是默认基线，除非用户明确要求，不要把它写成必需项
 
 ## 改动完成前的检查
 
