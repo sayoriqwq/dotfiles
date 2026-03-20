@@ -12,10 +12,9 @@
 
 当改动影响以下任一内容时，必须同步更新对应文档：
 
-- 工具栈变化：更新 `README.md` 和 `CLI-tools.md`
-- 受管文件变化：更新 `MANAGED.md`
-- 使用方式或操作流程变化：更新 `use.md`
-- 终端基线、采用结论、受管状态变化：更新 `docs/superpowers/2026-03-17-terminal-tools-current-state.md`
+- 项目入口或文档导航变化：更新 `README.md`
+- 受管文件、忽略策略、使用方式变化：更新 `docs/chezmoi.md`
+- 终端基线、采用结论、受管状态变化：更新 `docs/terminal-current-state.md`
 
 不要只改配置不改文档，也不要只写新文档而保留明显过期的旧描述。
 
@@ -32,6 +31,6 @@
 在结束前，至少做一次下面的核对：
 
 - 文档中的工具列表和当前实际状态一致
-- `MANAGED.md` 与实际受管文件一致
+- `docs/chezmoi.md` 与实际受管文件一致
 - `README.md` 的入口链接有效
 - 如果新增或迁移了配置，确认对应源文件已经进入 `chezmoi` 管理

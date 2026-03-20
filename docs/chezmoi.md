@@ -1,0 +1,52 @@
+# Chezmoi 使用说明
+
+这个仓库的真相来源是 `chezmoi` 源文件，不是家目录里的目标文件。
+
+## 受管文件
+
+| 目标路径 | 源路径 | 说明 |
+|---|---|---|
+| `~/.zshrc` | `dot_zshrc` | Zsh 配置 |
+| `~/.wezterm.lua` | `dot_wezterm.lua` | WezTerm 配置 |
+| `~/.gitconfig` | `dot_gitconfig` | Git 配置 |
+| `~/.hushlogin` | `create_empty_dot_hushlogin` | 静默登录提示 |
+| `~/.config/starship.toml` | `dot_config/starship.toml` | Starship 配置 |
+| `~/.config/atuin/config.toml` | `dot_config/atuin/config.toml` | Atuin 配置 |
+
+## 忽略路径
+
+- `*.md` 和 `docs/`：仓库文档，只保留在 repo 内
+- `dot_config/ghostty/config` 对应的 `~/.config/ghostty/config`：默认忽略
+
+## 日常工作流
+
+修改已有配置：
+
+```bash
+chezmoi edit ~/.wezterm.lua
+chezmoi diff -- ~/.wezterm.lua
+chezmoi apply ~/.wezterm.lua
+chezmoi diff -- ~/.wezterm.lua
+```
+
+把目标文件改动回收进源文件：
+
+```bash
+chezmoi diff -- ~/.wezterm.lua
+chezmoi re-add ~/.wezterm.lua
+chezmoi diff -- ~/.wezterm.lua
+```
+
+查看当前受管文件：
+
+```bash
+chezmoi managed
+```
+
+查看某个目标文件对应的源路径：
+
+```bash
+chezmoi source-path ~/.wezterm.lua
+```
+
+一句话规则：`edit -> diff -> apply -> diff`
