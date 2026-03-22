@@ -78,7 +78,7 @@
 | `fish_color_end` | `tokens.intent.structure` |
 | `fish_color_comment` | `tokens.text.faint` |
 | `fish_color_autosuggestion` | `tokens.text.faint` |
-| `fish_color_search_match` | `selection_bg` |
+| `fish_color_search_match` | `tokens.bg.highlight` |
 | `fish_color_selection` | `selection_bg` |
 
 补全列表当前也倾向维持克制：
@@ -86,7 +86,7 @@
 - `fish_pager_color_completion` 用正文前景
 - `fish_pager_color_prefix` 用正文前景
 - `fish_pager_color_description` 用正文前景
-- `fish_pager_color_selected_background` 用 `selection_bg`
+- `fish_pager_color_selected_background` 用 `tokens.bg.surface`
 - `fish_pager_color_selected_description` 用 `tokens.text.faint`
 
 第三组 fallback / prompt 相关字段当前采用下面的映射：
@@ -101,7 +101,7 @@
 | `fish_color_status` | `tokens.intent.danger` |
 | `fish_color_history_current` | `--bold` |
 | `fish_color_cancel` | `--reverse` |
-| `fish_pager_color_progress` | `tokens.text.primary` + `selection_bg` |
+| `fish_pager_color_progress` | `tokens.intent.warning` + `tokens.bg.surface` |
 
 ## 当前不一致点
 

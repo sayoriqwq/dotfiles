@@ -5,14 +5,12 @@
 ## 1. 补充 Token 与进阶设计 (已完成 ✅)
 **成果**：在 `themes/sayoriqwq-obsidian.yml` 中新增了 `tokens.intent.warning` (`#D4A373`)、`tokens.bg.surface` (`#1E1E1E`) 和 `tokens.bg.highlight` (`#252525`)，并同步更新了 `docs/theme-tokens.md`，完善了语义覆盖面。
 
-## 2. 规范化与对齐 Starship 提示符 (Normalize) (进行中 🏃)
-**目标**：将 Starship 的散落颜色配置严格对齐到已有的语义 Token 上，确保颜色不仅好看，而且在整个系统中拥有绝对严谨的语义逻辑。
-**行动**：使用 `normalize` 技能，通过 HEX 值直接映射，去除对基础 ANSI 颜色名（如 `red`, `blue`）的依赖，避免终端调色板可能引起的语义混淆。同时利用 `colorize` 和 `polish` 思路，调整间距和色彩策略。
+## 2. 规范化与对齐 Starship 提示符 (已完成 ✅)
+**成果**：重写了 Starship 提示符。通过精准的 `$before_root_path`, `$repo_root` 等变量格式化，实现了深层 Monorepo 环境下的“外部截断灰化、内部全展高亮”的逻辑，同时所有的颜色都已经严丝合缝地映射到了 `sayoriqwq-obsidian` 的 Token 体系上。
 
-## 3. 全局规范化与终端对齐 (Normalize - Phase 2)
-**目标**：确保所有外围工具（如 Fish 的高亮规则、Ghostty 的适配层等）严格对齐到已更新的 `sayoriqwq-obsidian.yml`。
-**行动**：更新 `.config/fish/conf.d/zz-theme-tokens.fish` 和 `.config/ghostty/themes/sayoriqwq-obsidian`，承接新增的 Token，确保系统级的一致性。
+## 3. 全局规范化与终端对齐 (已完成 ✅)
+**成果**：更新了 Fish 的语义映射文件 `.config/fish/conf.d/zz-theme-tokens.fish`。将自动补全菜单背景对齐到 `bg.surface` (`#1E1E1E`)，进度条颜色对齐到 `intent.warning` (`#D4A373`)，搜索匹配对齐到 `bg.highlight` (`#252525`)。更新了 `docs/theme-tokens.md` 以反映这些变更。
 
-## 4. 全局体验审查 (Audit)
+## 4. 全局体验审查 (Audit) (待执行 🔜)
 **目标**：找出任何可能破坏沉浸感的地方，确保全局体验符合设计原则。
 **行动**：使用 `audit` 技能，对整个仓库的终端配置（Ghostty, WezTerm, Fish, Zsh, Starship）做一次全面的体验审查，出具体验报告。

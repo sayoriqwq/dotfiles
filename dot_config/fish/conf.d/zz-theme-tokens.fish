@@ -23,14 +23,13 @@ set --global fish_color_status CF6679
 set --global fish_color_user 81C784
 set --global fish_color_valid_path E0E0E0
 set --global fish_color_match 64B5F6
-set --global fish_color_search_match --background=2C3E50
+set --global fish_color_search_match --background=252525 # bg.highlight
 set --global fish_color_selection --background=2C3E50
 
 set --global fish_pager_color_completion E0E0E0
 set --global fish_pager_color_prefix E0E0E0
 set --global fish_pager_color_description E0E0E0
-set --global fish_pager_color_selected_background --background=2C3E50
+set --global fish_pager_color_selected_background --background=1E1E1E # bg.surface
 set --global fish_pager_color_selected_completion E0E0E0
 set --global fish_pager_color_selected_description 454545
-set --global fish_pager_color_selected_prefix E0E0E0
-set --global fish_pager_color_progress E0E0E0 --bold --background=2C3E50
+set --global fish_pager_color_progress D4A373 --bold --background=1E1E1E # intent.warning + bg.surface
