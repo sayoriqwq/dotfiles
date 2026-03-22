@@ -1,47 +1,30 @@
-# 终端当前状态
+# 当前终端架构与工具链
 
-**日期：** 2026-03-23
+> **基调**：Ghostty (主) + Fish (默认) + Chezmoi (管理)
 
-## 当前基线
+## 核心基线
+- **主终端**：Ghostty (默认集成 Fish)
+- **备用终端**：WezTerm (默认集成 Zsh，作兼容回退)
+- **环境配置**：Chezmoi
+- **开发环境**：Mise (管理 Node.js/Bun 等)
 
-- 主终端：`ghostty`
-- Ghostty 默认 shell：`fish`
-- WezTerm 默认 shell：`zsh`
-- dotfiles 管理器：`chezmoi`
-- `Node.js` / `Bun` 管理器：`mise`
-- 保留终端：`wezterm`，用于兼容 / 回退
+## 核心工具集
+| 功能 | 工具 | 说明 |
+|---|---|---|
+| **Prompt** | `starship` | 极简、上下文感知的提示符 |
+| **历史记录** | `atuin` | `Ctrl+Up` 触发，保留原生上下键 |
+| **模糊搜索** | `fzf` | 终端内万物搜索 |
+| **目录跳转** | `zoxide` | 替代 `cd`，智能跳转 (`z`) |
+| **高亮与提示** | `fish` 内建 | Autosuggestions & Syntax Highlighting |
+| **文件与预览** | `eza`, `fd`, `bat`, `yazi` | 现代化的系统核心命令替代品 |
+| **代码搜索** | `rg`, `delta`, `jq` | 高性能文本与数据处理 |
 
-## 核心工具
+## 管理策略 (Chezmoi)
+- **受管文件**：Ghostty, Fish, Starship, Atuin, Git, SSH (`hushlogin`) 及 `HOME.md`。
+- **动态模板**：`wezterm.lua.tmpl` (实时拉取主题源配置)。
+- **非受管/忽略**：`.zshrc` (仅作回退参考)。
 
-- Prompt：`starship`
-- 历史搜索：`atuin`
-- 模糊搜索：`fzf`
-- 目录跳转：`zoxide`
-- Fish 内建：autosuggestions、syntax highlighting
-- 文件与预览：`eza`、`fd`、`bat`、`yazi`
-- 搜索与 diff：`rg`、`delta`、`jq`
-- 辅助工具：`thefuck`
-
-## 受管状态
-
-- 当前受管：`~/.config/fish/config.fish`、`~/.config/fish/conf.d/zz-theme-tokens.fish`、`~/.config/ghostty/config`、`~/.config/ghostty/themes/sayoriqwq-obsidian`、`~/.wezterm.lua`、`~/.gitconfig`、`~/.hushlogin`
-- 当前受管：`~/.config/starship.toml`、`~/.config/atuin/config.toml`、`~/HOME.md`
-- 默认忽略：`~/.zshrc`
-- 默认仅保留在 repo 内的文档：`README.md` 与 `docs/`
-- 单独受管的 Markdown：`~/HOME.md`
-
-## 当前约束
-
-- 当前方向是 `Ghostty + Fish + chezmoi`
-- `WezTerm` 配置仍然保留并受管，但不再作为主终端基线
-- `zsh` 配置仅在仓库中保留作为回退参考，默认不再受管
-- Ghostty 与 WezTerm 都显式绑定各自 shell，不跟随系统 login shell
-- WezTerm 当前保留 `zsh` 作为兼容 / 回退 shell；整体仍接近 WezTerm 默认，但额外对齐了 Ghostty 风格的 split / pane 键位
-- Fish 配置默认直接初始化基线工具；缺失工具会在 shell 启动时直接暴露错误
-- Fish 当前使用内建 syntax highlighting；输入区、pager 和 fallback 相关颜色统一由受管文件 `~/.config/fish/conf.d/zz-theme-tokens.fish` 提供
-- Atuin 的 Fish 初始化当前通过 `--disable-up-arrow` 保留默认 `Up/Down` 语义；Fish 侧仅把 `Ctrl+Up` 单独绑定到 Atuin 历史搜索
-- 主题颜色的语义层真相来源单独放在 `themes/`，并在 `themes/sayoriqwq-obsidian.yml` 的 `tokens` 段统一管理
-- Fish 语义高亮与主题 token 的映射基线单独记录在 `docs/theme-tokens.md`
-- Ghostty 当前通过 `theme = sayoriqwq-obsidian` 加载本地主题适配文件
-- Ghostty 当前保留 tabs，并使用 `macos-titlebar-style = tabs`
-- `direnv` 不是默认基线，除非用户明确要求，不要把它写成必需项
+## 设计与主题约束
+1. **单一真相来源 (SSOT)**：所有终端颜色必须来源于 `themes/sayoriqwq-obsidian.yml`。
+2. **终端职责分离**：Ghostty 仅负责基线 ANSI 色和窗体外观；语义级颜色（如 Fish 的语法高亮）由 `zz-theme-tokens.fish` 在 Shell 层独立完成。
+3. **极简体验**：按需显示，不打扰，无弹窗。`direnv` 暂不作为默认项引入，避免复杂化环境。

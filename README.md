@@ -1,30 +1,29 @@
-# dotfiles
+# Sayori's Dotfiles
 
-使用 [chezmoi](https://www.chezmoi.io/) 管理的 macOS 个人配置。
+使用 [Chezmoi](https://www.chezmoi.io/) 构建的极简、禅意 macOS 个人终端环境。
 
-当前基线：
+## 核心基调
+- **主终端**: [Ghostty](https://ghostty.org/)
+- **主 Shell**: Fish
+- **备用回退**: [WezTerm](https://wezfurlong.org/wezterm/) + Zsh
+- **环境管理**: Chezmoi (Dotfiles), Mise (Node.js/Bun)
 
-- Terminal: [Ghostty](https://ghostty.org/)
-- Shell: Fish
-- Dotfiles manager: `chezmoi`
-- Node.js / Bun manager: `mise`
-- Fallback terminal: [WezTerm](https://wezfurlong.org/wezterm/)
+整个终端环境基于一套名为 `sayoriqwq-obsidian` 的低饱和度设计系统。所有组件（包括 Starship 提示符、Fish 语法高亮、Ghostty 与 WezTerm 主题）均严格对齐该 Token 体系，确保长时间使用的视觉沉浸感。
 
-## 初始化
+## 快速开始
 
 ```bash
+# 全新机器一键初始化
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply sayoriqwq
 ```
 
-## 文档
+## 文档指引
+> 详见 [docs/README.md](./docs/README.md) 导航页
 
-- [docs/README.md](./docs/README.md): 文档入口与分工
-- [docs/terminal-current-state.md](./docs/terminal-current-state.md): 当前终端基线、保留项、受管现状
-- [docs/theme-tokens.md](./docs/theme-tokens.md): 主题 token 分层、Ghostty / Fish 边界与当前对齐状态
-- [docs/chezmoi.md](./docs/chezmoi.md): `chezmoi` 受管范围、忽略策略、常用工作流
+- [终端与工具链](./docs/terminal-current-state.md): 了解当前使用的现代 CLI 工具替代品 (如 eza, zoxide, fd)。
+- [Chezmoi 管理指南](./docs/chezmoi.md): 了解配置的同步规则、文件源路径及日常增改查工作流。
+- [主题与 Token 体系](./docs/theme-tokens.md): 了解本仓库如何实现“单一真相来源”的全局终端着色。
 
-当前仓库以 `Ghostty + Fish + chezmoi` 为主基线，`WezTerm` 保留为兼容 / 回退终端，`zsh` 配置只作为回退参考，默认不再由 `chezmoi` 受管。
-
-主题颜色的语义层真相来源单独保存在 `themes/`，终端配置只负责消费和适配，不应反向把终端专属设置混入主题源。
-
-仓库文档默认只保留在 repo 内，已通过 `.chezmoiignore` 排除，不会在 `chezmoi apply` 时写入 `~`。当前唯一受管的 Markdown 是 `~/HOME.md`。
+## 设计原则
+本仓库维护遵循 [`.impeccable.md`](./.impeccable.md) 中的设计纲领：
+**沉浸、专注、禅意极简**。任何针对 UI 的 PR 与配置修改，都必须确保低视觉噪音和绝对的语义一致性。
