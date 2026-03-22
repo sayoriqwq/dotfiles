@@ -20,6 +20,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply sayoriqwq
 
 - [docs/README.md](./docs/README.md): 文档入口与分工
 - [docs/terminal-current-state.md](./docs/terminal-current-state.md): 当前终端基线、保留项、受管现状
+- [docs/theme-tokens.md](./docs/theme-tokens.md): 主题 token 分层、Ghostty / Fish 边界与当前对齐状态
 - [docs/chezmoi.md](./docs/chezmoi.md): `chezmoi` 受管范围、忽略策略、常用工作流
 
 当前仓库以 `Ghostty + Fish + chezmoi` 为主基线，`WezTerm` 保留为兼容 / 回退终端，`zsh` 配置只作为回退参考，默认不再由 `chezmoi` 受管。

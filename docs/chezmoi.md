@@ -7,6 +7,7 @@
 | 目标路径 | 源路径 | 说明 |
 |---|---|---|
 | `~/.config/fish/config.fish` | `dot_config/fish/config.fish` | Fish 配置 |
+| `~/.config/fish/conf.d/zz-theme-tokens.fish` | `dot_config/fish/conf.d/zz-theme-tokens.fish` | Fish 语义高亮 token 映射 |
 | `~/.config/ghostty/config` | `dot_config/ghostty/config` | Ghostty 主终端配置 |
 | `~/.config/ghostty/themes/sayoriqwq-obsidian` | `dot_config/ghostty/themes/sayoriqwq-obsidian` | Ghostty 主题适配文件 |
 | `~/.wezterm.lua` | `dot_wezterm.lua` | WezTerm 兼容 / 回退配置 |

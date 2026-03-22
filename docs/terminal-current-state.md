@@ -1,6 +1,6 @@
 # 终端当前状态
 
-**日期：** 2026-03-22
+**日期：** 2026-03-23
 
 ## 当前基线
 
@@ -24,7 +24,7 @@
 
 ## 受管状态
 
-- 当前受管：`~/.config/fish/config.fish`、`~/.config/ghostty/config`、`~/.config/ghostty/themes/sayoriqwq-obsidian`、`~/.wezterm.lua`、`~/.gitconfig`、`~/.hushlogin`
+- 当前受管：`~/.config/fish/config.fish`、`~/.config/fish/conf.d/zz-theme-tokens.fish`、`~/.config/ghostty/config`、`~/.config/ghostty/themes/sayoriqwq-obsidian`、`~/.wezterm.lua`、`~/.gitconfig`、`~/.hushlogin`
 - 当前受管：`~/.config/starship.toml`、`~/.config/atuin/config.toml`、`~/HOME.md`
 - 默认忽略：`~/.zshrc`
 - 默认仅保留在 repo 内的文档：`README.md` 与 `docs/`
@@ -37,8 +37,9 @@
 - `zsh` 配置仅在仓库中保留作为回退参考，默认不再受管
 - Ghostty 与 WezTerm 都显式绑定各自 shell，不跟随系统 login shell
 - Fish 配置默认直接初始化基线工具；缺失工具会在 shell 启动时直接暴露错误
-- Fish 语法高亮当前刻意向 `zsh-syntax-highlighting` 的输入区表现靠拢
-- 主题颜色的语义层真相来源单独放在 `themes/`，终端配置只负责适配
+- Fish 当前使用内建 syntax highlighting；输入区、pager 和 fallback 相关颜色统一由受管文件 `~/.config/fish/conf.d/zz-theme-tokens.fish` 提供
+- 主题颜色的语义层真相来源单独放在 `themes/`，并在 `themes/sayoriqwq-obsidian.yml` 的 `tokens` 段统一管理
+- Fish 语义高亮与主题 token 的映射基线单独记录在 `docs/theme-tokens.md`
 - Ghostty 当前通过 `theme = sayoriqwq-obsidian` 加载本地主题适配文件
 - Ghostty 当前保留 tabs，并使用 `macos-titlebar-style = tabs`
 - `direnv` 不是默认基线，除非用户明确要求，不要把它写成必需项

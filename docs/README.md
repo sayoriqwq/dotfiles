@@ -5,6 +5,7 @@
 ## 从哪里开始
 
 - 想确认当前终端、shell 和工具基线：看 `docs/terminal-current-state.md`
+- 想确认主题 token 分层、Ghostty / Fish 的职责边界和当前不一致点：看 `docs/theme-tokens.md`
 - 想确认 `chezmoi` 受管范围、忽略策略和日常命令：看 `docs/chezmoi.md`
 - 想快速了解仓库入口和初始化方式：看仓库根目录的 `README.md`
 

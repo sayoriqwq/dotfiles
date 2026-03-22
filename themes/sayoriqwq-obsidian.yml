@@ -25,6 +25,27 @@
 #   选区背景色。用于表示文本被选中时的底色。
 # - selection_fg:
 #   选区文本色。用于表示文本被选中时的前景色；若终端不支持独立控制，由适配层决定回退。
+# - tokens:
+#   语义 token 层。这里不直接绑定某个终端或 shell 的字段名，而是提供稳定的颜色语义入口，
+#   供 Ghostty 主题适配、Fish 高亮映射等消费。
+#   - text.primary:
+#     正文主前景。
+#   - text.muted:
+#     比正文略弱一档的中性文本。
+#   - text.subtle:
+#     更弱一档的说明性文本。
+#   - text.faint:
+#     最弱一档的退后文本，适合 autosuggestion、comment 一类内容。
+#   - intent.success:
+#     成功 / 有效 / 可执行语义。
+#   - intent.danger:
+#     错误 / 非法 / 警告语义。
+#   - intent.info:
+#     冷色功能性强调。
+#   - intent.structure:
+#     结构、连接、控制流一类语义强调。
+#   - intent.accent:
+#     辅助强调色，保留给二级语义使用。
 # - ansi:
 #   ANSI 16 色调色盘，顺序固定为 0..15。
 #   0..7 为普通色，8..15 为亮色。后续导出时必须保持这个顺序，不应随意重排。
@@ -40,6 +61,19 @@ cursor_text: "#121212"
 
 selection_bg: "#2C3E50"
 selection_fg: "#E0E0E0"
+
+tokens:
+  text:
+    primary: "#E0E0E0"
+    muted: "#D0D0D0"
+    subtle: "#BDBDBD"
+    faint: "#454545"
+  intent:
+    success: "#81C784"
+    danger: "#CF6679"
+    info: "#64B5F6"
+    structure: "#76C1E1"
+    accent: "#A291B5"
 
 ansi:
   - "#121212" # 0: black
