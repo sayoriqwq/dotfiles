@@ -28,43 +28,44 @@ config.keys = {
     { key = "UpArrow",    mods = "CTRL|SUPER",  action = act.AdjustPaneSize { "Up", 10 } },
 }
 
--- WezTerm Theme: sayoriqwq-obsidian
+{{ $theme := fromYaml (include "themes/sayoriqwq-obsidian.yml") }}
+-- WezTerm Theme: {{ $theme.name }}
 config.window_background_opacity = 0.9
 config.macos_window_background_blur = 20
 
 config.color_schemes = {
-    ["sayoriqwq-obsidian"] = {
-        foreground = "#E0E0E0",
-        background = "#121212",
-        cursor_bg = "#5FAFFF",
-        cursor_border = "#5FAFFF",
-        cursor_fg = "#121212",
-        selection_bg = "#2C3E50",
-        selection_fg = "#E0E0E0",
+    ["{{ $theme.name }}"] = {
+        foreground = "{{ $theme.foreground }}",
+        background = "{{ $theme.background }}",
+        cursor_bg = "{{ $theme.cursor }}",
+        cursor_border = "{{ $theme.cursor }}",
+        cursor_fg = "{{ $theme.cursor_text }}",
+        selection_bg = "{{ $theme.selection_bg }}",
+        selection_fg = "{{ $theme.selection_fg }}",
 
         ansi = {
-            "#121212",
-            "#CF6679",
-            "#81C784",
-            "#BDBDBD",
-            "#64B5F6",
-            "#A291B5",
-            "#76C1E1",
-            "#D0D0D0"
+            "{{ index $theme.ansi 0 }}",
+            "{{ index $theme.ansi 1 }}",
+            "{{ index $theme.ansi 2 }}",
+            "{{ index $theme.ansi 3 }}",
+            "{{ index $theme.ansi 4 }}",
+            "{{ index $theme.ansi 5 }}",
+            "{{ index $theme.ansi 6 }}",
+            "{{ index $theme.ansi 7 }}"
         },
 
         brights = {
-            "#454545",
-            "#FF8A80",
-            "#B9F6CA",
-            "#FFFFFF",
-            "#82B1FF",
-            "#C1B1D1",
-            "#99D6EA",
-            "#FFFFFF"
+            "{{ index $theme.ansi 8 }}",
+            "{{ index $theme.ansi 9 }}",
+            "{{ index $theme.ansi 10 }}",
+            "{{ index $theme.ansi 11 }}",
+            "{{ index $theme.ansi 12 }}",
+            "{{ index $theme.ansi 13 }}",
+            "{{ index $theme.ansi 14 }}",
+            "{{ index $theme.ansi 15 }}"
         },
     },
 }
-config.color_scheme = "sayoriqwq-obsidian"
+config.color_scheme = "{{ $theme.name }}"
 
 return config

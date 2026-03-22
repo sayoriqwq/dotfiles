@@ -11,6 +11,12 @@
 ## 3. 全局规范化与终端对齐 (已完成 ✅)
 **成果**：更新了 Fish 的语义映射文件 `.config/fish/conf.d/zz-theme-tokens.fish`。将自动补全菜单背景对齐到 `bg.surface` (`#1E1E1E`)，进度条颜色对齐到 `intent.warning` (`#D4A373`)，搜索匹配对齐到 `bg.highlight` (`#252525`)。更新了 `docs/theme-tokens.md` 以反映这些变更。
 
-## 4. 全局体验审查 (Audit) (待执行 🔜)
-**目标**：找出任何可能破坏沉浸感的地方，确保全局体验符合设计原则。
-**行动**：使用 `audit` 技能，对整个仓库的终端配置（Ghostty, WezTerm, Fish, Zsh, Starship）做一次全面的体验审查，出具体验报告。
+## 4. 全局体验审查 (Audit) (已完成 ✅)
+**成果**：运行了 `audit` 技能，生成了详细的体验审查报告 `docs/audit-report.md`。系统的核心设计质量极高，但在清理代码和次要终端的对齐上发现了改进点。
+
+---
+
+## 5. 审查后优化 (Post-Audit Fixes) (已完成 ✅)
+**成果**：
+1. **Distill Starship**：清理了 `starship.toml` 中冗长的调试与说明注释，完全符合极简禅意的美学和代码整洁度。
+2. **Normalize WezTerm**：将 `dot_wezterm.lua` 升级为了 chezmoi 模板文件 `dot_wezterm.lua.tmpl`。现在它能在应用配置时，动态且实时地解析 `sayoriqwq-obsidian.yml` 中的颜色值。从而彻底消灭了散落的硬编码，实现了真正的**单一真相来源 (SSOT)**。
