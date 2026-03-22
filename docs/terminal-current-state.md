@@ -36,8 +36,10 @@
 - `WezTerm` 配置仍然保留并受管，但不再作为主终端基线
 - `zsh` 配置仅在仓库中保留作为回退参考，默认不再受管
 - Ghostty 与 WezTerm 都显式绑定各自 shell，不跟随系统 login shell
+- WezTerm 当前保留 `zsh` 作为兼容 / 回退 shell；整体仍接近 WezTerm 默认，但额外对齐了 Ghostty 风格的 split / pane 键位
 - Fish 配置默认直接初始化基线工具；缺失工具会在 shell 启动时直接暴露错误
 - Fish 当前使用内建 syntax highlighting；输入区、pager 和 fallback 相关颜色统一由受管文件 `~/.config/fish/conf.d/zz-theme-tokens.fish` 提供
+- Atuin 的 Fish 初始化当前通过 `--disable-up-arrow` 保留默认 `Up/Down` 语义；Fish 侧仅把 `Ctrl+Up` 单独绑定到 Atuin 历史搜索
 - 主题颜色的语义层真相来源单独放在 `themes/`，并在 `themes/sayoriqwq-obsidian.yml` 的 `tokens` 段统一管理
 - Fish 语义高亮与主题 token 的映射基线单独记录在 `docs/theme-tokens.md`
 - Ghostty 当前通过 `theme = sayoriqwq-obsidian` 加载本地主题适配文件

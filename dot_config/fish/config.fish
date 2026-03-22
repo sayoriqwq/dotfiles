@@ -10,10 +10,14 @@ fish_add_path --path --move --prepend \
 
 fzf --fish | source
 zoxide init fish --cmd cd | source
-atuin init fish | source
+atuin init fish --disable-up-arrow | source
 starship init fish | source
 env TF_SHELL=fish thefuck --alias | source
 source "$HOME/.openclaw/completions/openclaw.fish"
+
+# 保留 Fish 默认 Up/Down 语义，只把 Ctrl+Up 交给 Atuin。
+bind ctrl-up _atuin_bind_up
+bind -M insert ctrl-up _atuin_bind_up
 
 alias ls="eza --icons=auto"
 

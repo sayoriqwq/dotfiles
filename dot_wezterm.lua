@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 -- basic appearance
 
 config.font = wezterm.font("Maple Mono NF CN")
-config.font_size = 19
+config.font_size = 20
 config.default_prog = { "/bin/zsh", "-l" }
 
 config.enable_tab_bar = false
@@ -14,57 +14,18 @@ config.window_decorations = "RESIZE"
 
 config.automatically_reload_config = true
 
--- Keybindings (CMD-based)
--- ban default keys, only apply my needs
-config.disable_default_key_bindings = true
-config.disable_default_mouse_bindings = false
-
-local SPLIT_PERCENT = 50
-local RESIZE_STEP = 3
-
 config.keys = {
-    { key = "n",          mods = "CMD",       action = act.SpawnWindow },
-    -- no confirm
-    { key = "w",          mods = "CMD",       action = act.CloseCurrentPane({ confirm = false }) },
-    -- zoom
-    { key = "z",          mods = "CMD",       action = act.TogglePaneZoomState },
-    -- Reload config
-    { key = "r",          mods = "CMD",       action = act.ReloadConfiguration },
-    -- Clipboard
-    { key = "c",          mods = "CMD",       action = act.CopyTo("Clipboard") },
-    { key = "v",          mods = "CMD",       action = act.PasteFrom("Clipboard") },
-
-    -- Quick clear
-    { key = "Backspace",  mods = "CMD",       action = act.SendString("clear\n") },
-    { key = "Backspace",  mods = "CMD|SHIFT", action = act.ClearScrollback("ScrollbackAndViewport") },
-
-    -- font size
-    { key = "+",          mods = "CMD",       action = act.IncreaseFontSize },
-    { key = "-",          mods = "CMD",       action = act.DecreaseFontSize },
-    { key = "0",          mods = "CMD",       action = act.ResetFontSize },
-
-    -- Search in scrollback
-    { key = "f",          mods = "CMD",       action = act.Search({ CaseSensitiveString = "" }) },
-
-    -- Pane focus movement
-    { key = "Enter",      mods = "CMD",       action = act.SplitPane { direction = "Down", size = { Percent = 40 } } },
-    -- 切换焦点：⌘ + 方向键
-    { key = "LeftArrow",  mods = "CMD",       action = act.ActivatePaneDirection("Left") },
-    { key = "DownArrow",  mods = "CMD",       action = act.ActivatePaneDirection("Down") },
-    { key = "RightArrow", mods = "CMD",       action = act.ActivatePaneDirection("Right") },
-    { key = "UpArrow",    mods = "CMD",       action = act.ActivatePaneDirection("Up") },
-
-    -- 分割：⌘⇧ + 方向键
-    { key = "LeftArrow",  mods = "CMD|SHIFT", action = act.SplitPane { direction = "Left", size = { Percent = SPLIT_PERCENT } } },
-    { key = "DownArrow",  mods = "CMD|SHIFT", action = act.SplitPane { direction = "Down", size = { Percent = SPLIT_PERCENT } } },
-    { key = "RightArrow", mods = "CMD|SHIFT", action = act.SplitPane { direction = "Right", size = { Percent = SPLIT_PERCENT } } },
-    { key = "UpArrow",    mods = "CMD|SHIFT", action = act.SplitPane { direction = "Up", size = { Percent = SPLIT_PERCENT } } },
-
-    -- Resize：⌘⌃ + 方向键
-    { key = "LeftArrow",  mods = "CMD|CTRL",  action = act.AdjustPaneSize { "Left", RESIZE_STEP } },
-    { key = "DownArrow",  mods = "CMD|CTRL",  action = act.AdjustPaneSize { "Down", RESIZE_STEP } },
-    { key = "RightArrow", mods = "CMD|CTRL",  action = act.AdjustPaneSize { "Right", RESIZE_STEP } },
-    { key = "UpArrow",    mods = "CMD|CTRL",  action = act.AdjustPaneSize { "Up", RESIZE_STEP } },
+    { key = "d",          mods = "SUPER",       action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
+    { key = "d",          mods = "SHIFT|SUPER", action = act.SplitVertical { domain = "CurrentPaneDomain" } },
+    { key = "Enter",      mods = "SHIFT|SUPER", action = act.TogglePaneZoomState },
+    { key = "LeftArrow",  mods = "ALT|SUPER",   action = act.ActivatePaneDirection "Left" },
+    { key = "DownArrow",  mods = "ALT|SUPER",   action = act.ActivatePaneDirection "Down" },
+    { key = "RightArrow", mods = "ALT|SUPER",   action = act.ActivatePaneDirection "Right" },
+    { key = "UpArrow",    mods = "ALT|SUPER",   action = act.ActivatePaneDirection "Up" },
+    { key = "LeftArrow",  mods = "CTRL|SUPER",  action = act.AdjustPaneSize { "Left", 10 } },
+    { key = "DownArrow",  mods = "CTRL|SUPER",  action = act.AdjustPaneSize { "Down", 10 } },
+    { key = "RightArrow", mods = "CTRL|SUPER",  action = act.AdjustPaneSize { "Right", 10 } },
+    { key = "UpArrow",    mods = "CTRL|SUPER",  action = act.AdjustPaneSize { "Up", 10 } },
 }
 
 -- WezTerm Theme: sayoriqwq-obsidian
