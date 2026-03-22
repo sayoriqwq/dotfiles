@@ -9,8 +9,10 @@ function zen
 
     echo ""
     # 使用辅助强调色 (意图为点缀，如我们的薰衣草紫)
-    set_color $fish_color_keyword
-    echo "  $quote"
-    set_color normal
+    if test -n "$quote"
+        set_color $fish_color_keyword
+        echo "  $quote"
+        set_color normal
+    end
     echo ""
 end
