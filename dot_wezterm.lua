@@ -7,6 +7,7 @@ local config = wezterm.config_builder()
 
 config.font = wezterm.font("Maple Mono NF CN")
 config.font_size = 19
+config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
 
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
