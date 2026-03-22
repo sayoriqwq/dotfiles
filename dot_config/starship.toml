@@ -1,5 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# 保留换行，将信息展示与输入区隔离，降低认知负担
 format = """
 $username\
 $hostname\
@@ -13,38 +14,77 @@ $python\
 $character"""
 
 [directory]
-style = "blue"
+# 针对 monorepo 的高级动态路径：
+# 我们要实现：外部只保留少量层级（回溯3级），但一旦进入 Git 仓库，仓库名(ecc_west)及内部的所有层级永远不被截断。
+
+# 1. 外部截断长度：在仓库外，或向前追溯时，最多显示 3 级（比如 .../desktop/work/ecc_west）
+truncation_length = 3
+truncation_symbol = "…/"
+
+# 2. 核心开关：关闭截断到仓库根（这样能看到 work/ 等外层），
+# 但配合 truncation_length = 3，它会自动把最外层的 ~ 截掉。
+truncate_to_repo = false
+
+# 3. 完美的颜色分层（Starship 支持的特性）：
+# $before_root_path: 仓库外部的路径 (如 .../desktop/work/)
+# $repo_root: 仓库名 (如 ecc_west)
+# $path: 仓库内部的路径 (如 /docs/adr)
+
+# 基础样式（备用）
+style = "#64B5F6"
+
+# 将前面部分（仓库外）设为弱色的灰色
+before_repo_root_style = "#BDBDBD"
+# 仓库根目录，设为普通蓝
+repo_root_style = "#64B5F6"
+
+# 默认的 format 是 `[$path]($style)`，它无法很好地分离 repo 内外。
+# 我们必须使用精细的 format 才能让这些样式生效并分离：
+format = "[$read_only]($read_only_style)[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style) "
+
+read_only = " 🔒"
+read_only_style = "#CF6679"
 
 [character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+# 映射到对应的语义 Token
+# success -> accent (#A291B5 紫色)
+# error -> danger (#CF6679 红色)
+# vimcmd -> success (#81C784 绿色)
+success_symbol = "[❯](#A291B5)"
+error_symbol = "[❯](#CF6679)"
+vimcmd_symbol = "[❮](#81C784)"
 
 [git_branch]
 format = "[$branch]($style)"
-style = "bright-black"
+# 用户明确要求：分支名是关键信息，常驻显示
+# 映射到 tokens.intent.accent (辅助强调色：薰衣草紫)
+style = "#A291B5"
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](#D4A373) ($ahead_behind$stashed)]($style)"
+# 整体括号使用 structure (#76C1E1)，内部的修改状态使用新增的 warning (#D4A373)
+style = "#76C1E1"
+conflicted = "!"
+untracked = "?"
+modified = "*"
+staged = "+"
+renamed = "»"
+deleted = "✘"
 stashed = "≡"
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
+# 映射到 tokens.text.faint (退后文本)
+style = "#454545"
 
 [cmd_duration]
 format = "[$duration]($style) "
-style = "yellow"
+# 映射到新增的 tokens.intent.warning (警告色：琥珀色/麦色)
+style = "#D4A373"
 
 [python]
 format = "[$virtualenv]($style) "
-style = "bright-black"
+# 映射到 tokens.text.faint (退后文本)
+style = "#454545"
 detect_extensions = []
 detect_files = []

@@ -50,9 +50,12 @@
 | `tokens.text.faint` | `#454545` | 极弱文本、退后文本 |
 | `tokens.intent.success` | `#81C784` | 成功 / 有效 / 可执行语义 |
 | `tokens.intent.danger` | `#CF6679` | 错误 / 非法 / 风险语义 |
+| `tokens.intent.warning` | `#D4A373` | 警告 / 变更 / 中间态语义 |
 | `tokens.intent.info` | `#64B5F6` | 冷色功能性强调 |
 | `tokens.intent.structure` | `#76C1E1` | 结构、连接、控制流语义 |
 | `tokens.intent.accent` | `#A291B5` | 辅助强调色 |
+| `tokens.bg.surface` | `#1E1E1E` | 浮层背景（如补全菜单） |
+| `tokens.bg.highlight` | `#252525` | 极弱高亮背景（如当前行） |
 
 ## Fish 高亮的目标映射基线
 

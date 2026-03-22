@@ -71,9 +71,13 @@ tokens:
   intent:
     success: "#81C784"
     danger: "#CF6679"
+    warning: "#D4A373"
     info: "#64B5F6"
     structure: "#76C1E1"
     accent: "#A291B5"
+  bg:
+    surface: "#1E1E1E"
+    highlight: "#252525"
 
 ansi:
   - "#121212" # 0: black
