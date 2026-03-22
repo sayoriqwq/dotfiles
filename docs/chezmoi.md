@@ -8,6 +8,7 @@
 |---|---|---|
 | `~/.config/fish/config.fish` | `dot_config/fish/config.fish` | Fish 配置 |
 | `~/.config/ghostty/config` | `dot_config/ghostty/config` | Ghostty 主终端配置 |
+| `~/.config/ghostty/themes/sayoriqwq-obsidian` | `dot_config/ghostty/themes/sayoriqwq-obsidian` | Ghostty 主题适配文件 |
 | `~/.wezterm.lua` | `dot_wezterm.lua` | WezTerm 兼容 / 回退配置 |
 | `~/.gitconfig` | `dot_gitconfig` | Git 配置 |
 | `~/.hushlogin` | `create_empty_dot_hushlogin` | 静默登录提示 |
@@ -18,6 +19,7 @@
 ## Repo 内保留项
 
 - `README.md`、`AGENTS.md`、`docs/`：仓库说明文档，只保留在 repo 内
+- `themes/`：终端主题语义层源文件，只保留在 repo 内
 - `.gitignore`：仓库元数据，只保留在 repo 内
 
 ## 忽略与例外
@@ -70,4 +72,4 @@ chezmoi source-path ~/.config/ghostty/config
 
 一句话规则：`edit -> diff -> apply -> diff`
 
-补充说明：当前以 `Ghostty + Fish + chezmoi` 作为终端基线；`WezTerm` 配置仍受管，但定位是兼容 / 回退；`zsh` 配置只在仓库中保留作为回退参考，默认不再由 `chezmoi` 管理。
+补充说明：当前以 `Ghostty + Fish + chezmoi` 作为终端基线；Ghostty 主配置只保留终端行为和外观项，颜色主题通过本地 theme 文件适配；`WezTerm` 配置仍受管，但定位是兼容 / 回退；`zsh` 配置只在仓库中保留作为回退参考，默认不再由 `chezmoi` 管理。

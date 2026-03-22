@@ -1,4 +1,4 @@
-status is-interactive; or return
+set -g fish_greeting
 
 fish_add_path --path --move --prepend \
     /opt/homebrew/bin \

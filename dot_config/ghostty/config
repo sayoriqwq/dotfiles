@@ -1,5 +1,7 @@
 # 样式基线
 
+theme = sayoriqwq-obsidian
+
 font-family = "Maple Mono NF CN"
 font-size = 19
 
@@ -9,36 +11,8 @@ macos-titlebar-style = transparent
 macos-window-buttons = hidden
 window-padding-x = 14
 
-# Obsidian Theme「custom」
-
-foreground = #E0E0E0
-background = #121212
-cursor-color = #5FAFFF
-cursor-text = #121212
-selection-background = #2C3E50
-selection-foreground = #E0E0E0
-
 # 透明度与模糊
 
 background-opacity = 0.9
 background-opacity-cells = true
 background-blur = 20
-
-# ANSI 调色板
-
-palette = 0=#121212
-palette = 1=#CF6679
-palette = 2=#81C784
-palette = 3=#BDBDBD
-palette = 4=#64B5F6
-palette = 5=#A291B5
-palette = 6=#76C1E1
-palette = 7=#D0D0D0
-palette = 8=#454545
-palette = 9=#FF8A80
-palette = 10=#B9F6CA
-palette = 11=#FFFFFF
-palette = 12=#82B1FF
-palette = 13=#C1B1D1
-palette = 14=#99D6EA
-palette = 15=#FFFFFF

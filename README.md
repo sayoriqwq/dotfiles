@@ -24,4 +24,6 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply sayoriqwq
 
 当前仓库以 `Ghostty + Fish + chezmoi` 为主基线，`WezTerm` 保留为兼容 / 回退终端，`zsh` 配置只作为回退参考，默认不再由 `chezmoi` 受管。
 
+主题颜色的语义层真相来源单独保存在 `themes/`，终端配置只负责消费和适配，不应反向把终端专属设置混入主题源。
+
 仓库文档默认只保留在 repo 内，已通过 `.chezmoiignore` 排除，不会在 `chezmoi apply` 时写入 `~`。当前唯一受管的 Markdown 是 `~/HOME.md`。

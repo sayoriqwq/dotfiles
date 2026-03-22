@@ -23,7 +23,7 @@
 
 ## 受管状态
 
-- 当前受管：`~/.config/fish/config.fish`、`~/.config/ghostty/config`、`~/.wezterm.lua`、`~/.gitconfig`、`~/.hushlogin`
+- 当前受管：`~/.config/fish/config.fish`、`~/.config/ghostty/config`、`~/.config/ghostty/themes/sayoriqwq-obsidian`、`~/.wezterm.lua`、`~/.gitconfig`、`~/.hushlogin`
 - 当前受管：`~/.config/starship.toml`、`~/.config/atuin/config.toml`、`~/HOME.md`
 - 默认忽略：`~/.zshrc`
 - 默认仅保留在 repo 内的文档：`README.md` 与 `docs/`
@@ -34,4 +34,6 @@
 - 当前方向是 `Ghostty + Fish + chezmoi`
 - `WezTerm` 配置仍然保留并受管，但不再作为主终端基线
 - `zsh` 配置仅在仓库中保留作为回退参考，默认不再受管
+- 主题颜色的语义层真相来源单独放在 `themes/`，终端配置只负责适配
+- Ghostty 当前通过 `theme = sayoriqwq-obsidian` 加载本地主题适配文件
 - `direnv` 不是默认基线，除非用户明确要求，不要把它写成必需项

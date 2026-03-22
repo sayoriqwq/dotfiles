@@ -1,0 +1,60 @@
+# sayoriqwq-obsidian 主题语义源文件。
+#
+# 这份文件只负责描述“主题本体”的颜色语义，是当前终端主题的真相来源。
+# 后续无论导出 Ghostty theme、WezTerm color scheme，还是对接 iTerm2-color-schemes
+# 风格的主题格式，都应该优先从这里读取，再由各终端的适配层转换成各自需要的字段。
+#
+# 这份文件不是任何终端可直接完整使用的最终配置，因此这里故意不包含字体、字号、
+# 透明度、模糊、窗口边距、标题栏、快捷键、默认 shell、pane / tab 行为等内容。
+# 这些都属于终端外观或行为层，应该留在各终端自己的配置文件里。
+#
+# 字段说明：
+# - name:
+#   主题名称。只用于标识主题本身，不绑定 Ghostty、WezTerm 或其他具体终端。
+# - appearance:
+#   主题明暗类型。当前约定使用 dark / light，便于后续导出和分类。
+# - background:
+#   终端默认背景色。这里只表示纯颜色语义，不包含透明度、毛玻璃等窗口效果。
+# - foreground:
+#   终端默认正文前景色。它定义一般文本的基准颜色，不等于所有强调文本颜色。
+# - cursor:
+#   光标主体颜色。适配层可将其映射为 cursor-color、cursor_bg、cursor_border 等字段。
+# - cursor_text:
+#   光标覆盖文本时的前景色。有些终端支持独立设置，有些终端可能需要回退处理。
+# - selection_bg:
+#   选区背景色。用于表示文本被选中时的底色。
+# - selection_fg:
+#   选区文本色。用于表示文本被选中时的前景色；若终端不支持独立控制，由适配层决定回退。
+# - ansi:
+#   ANSI 16 色调色盘，顺序固定为 0..15。
+#   0..7 为普通色，8..15 为亮色。后续导出时必须保持这个顺序，不应随意重排。
+
+name: "sayoriqwq-obsidian"
+appearance: "dark"
+
+background: "#121212"
+foreground: "#E0E0E0"
+
+cursor: "#5FAFFF"
+cursor_text: "#121212"
+
+selection_bg: "#2C3E50"
+selection_fg: "#E0E0E0"
+
+ansi:
+  - "#121212" # 0: black
+  - "#CF6679" # 1: red
+  - "#81C784" # 2: green
+  - "#BDBDBD" # 3: yellow
+  - "#64B5F6" # 4: blue
+  - "#A291B5" # 5: magenta
+  - "#76C1E1" # 6: cyan
+  - "#D0D0D0" # 7: white
+  - "#454545" # 8: bright black
+  - "#FF8A80" # 9: bright red
+  - "#B9F6CA" # 10: bright green
+  - "#FFFFFF" # 11: bright yellow
+  - "#82B1FF" # 12: bright blue
+  - "#C1B1D1" # 13: bright magenta
+  - "#99D6EA" # 14: bright cyan
+  - "#FFFFFF" # 15: bright white
