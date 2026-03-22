@@ -8,29 +8,12 @@ fish_add_path --path --move --prepend \
     $HOME/.cabal/bin \
     $HOME/.atuin/bin
 
-if type -q fzf
-    fzf --fish | source
-end
-
-if type -q zoxide
-    zoxide init fish --cmd cd | source
-end
-
-if type -q atuin
-    atuin init fish | source
-end
-
-if type -q starship
-    starship init fish | source
-end
-
-if type -q thefuck
-    env TF_SHELL=fish thefuck --alias | source
-end
-
-if test -f "$HOME/.openclaw/completions/openclaw.fish"
-    source "$HOME/.openclaw/completions/openclaw.fish"
-end
+fzf --fish | source
+zoxide init fish --cmd cd | source
+atuin init fish | source
+starship init fish | source
+env TF_SHELL=fish thefuck --alias | source
+source "$HOME/.openclaw/completions/openclaw.fish"
 
 alias ls="eza --icons=auto"
 

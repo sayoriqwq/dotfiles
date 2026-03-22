@@ -1,18 +1,19 @@
 # 样式基线
 
 theme = sayoriqwq-obsidian
+command = direct:/opt/homebrew/bin/fish -l
 
 font-family = "Maple Mono NF CN"
-font-size = 19
+font-size = 20
 
 # 窗口外观
 
-macos-titlebar-style = transparent
+macos-titlebar-style = tabs
 macos-window-buttons = hidden
-window-padding-x = 14
+window-padding-x = 20
 
 # 透明度与模糊
 
 background-opacity = 0.9
 background-opacity-cells = true
-background-blur = 20
+background-blur = 10
