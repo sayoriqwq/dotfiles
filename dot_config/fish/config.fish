@@ -1,4 +1,4 @@
-set -g fish_greeting
+# 自定义问候语已在 functions/fish_greeting.fish 中接管
 
 fish_add_path --path --move --prepend \
     /opt/homebrew/bin \
