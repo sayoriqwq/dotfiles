@@ -1,43 +1,28 @@
-# 基础外观
+# 样式基线
 
 font-family = "Maple Mono NF CN"
 font-size = 19
 
-# 标题栏与窗口留白
-# 保持 `transparent`，这样在 macOS 上拖动窗口更自然。
-# 用空标题隐藏居中的 macOS 标题文字。
-# 隐藏标签栏和红绿灯按钮，减少视觉干扰。
+# 窗口外观
 
-window-show-tab-bar = never
-confirm-close-surface = false
 macos-titlebar-style = transparent
 macos-window-buttons = hidden
 window-padding-x = 14
 
-# Ghostty 主题：Obsidian「custom」
+# Obsidian Theme「custom」
 
 foreground = #E0E0E0
 background = #121212
-cursor-color = #78C4FF
-cursor-text = cell-background
+cursor-color = #5FAFFF
+cursor-text = #121212
 selection-background = #2C3E50
 selection-foreground = #E0E0E0
-
-# 光标与 Shell 交互
-
-cursor-style = bar
-cursor-opacity = 0.95
-cursor-style-blink = false
-adjust-cursor-thickness = 4
-shell-integration-features = no-cursor
-cursor-click-to-move = true
 
 # 透明度与模糊
 
 background-opacity = 0.9
 background-opacity-cells = true
 background-blur = 20
-unfocused-split-opacity = 1
 
 # ANSI 调色板
 
@@ -57,54 +42,3 @@ palette = 12=#82B1FF
 palette = 13=#C1B1D1
 palette = 14=#99D6EA
 palette = 15=#FFFFFF
-
-# 快捷键（基于 CMD）
-
-keybind = cmd+n=new_window
-# 关闭时不二次确认
-keybind = cmd+w=close_surface
-# 窗格放大/还原
-keybind = cmd+z=toggle_split_zoom
-# 重载配置
-keybind = cmd+r=reload_config
-# 剪贴板
-keybind = cmd+c=copy_to_clipboard
-keybind = cmd+v=paste_from_clipboard
-# 快速清屏
-keybind = "cmd+backspace=text:clear\n"
-
-# 字体大小
-keybind = cmd+plus=increase_font_size:1
-keybind = cmd+minus=decrease_font_size:1
-keybind = cmd+0=reset_font_size
-
-# 窗格操作
-keybind = cmd+enter=new_split:down
-# 调整分屏尺寸：⌘⌃ + 方向键，每次调整 3 个单位
-keybind = cmd+ctrl+left=resize_split:left,3
-keybind = cmd+ctrl+right=resize_split:right,3
-keybind = cmd+ctrl+up=resize_split:up,3
-keybind = cmd+ctrl+down=resize_split:down,3
-# 切换焦点：⌘ + 方向键
-keybind = cmd+left=goto_split:left
-keybind = cmd+right=goto_split:right
-keybind = cmd+up=goto_split:top
-keybind = cmd+down=goto_split:bottom
-
-# 分割：⌘⇧ + 方向键
-keybind = cmd+shift+left=new_split:left
-keybind = cmd+shift+right=new_split:right
-keybind = cmd+shift+up=new_split:up
-keybind = cmd+shift+down=new_split:down
-
-# 长任务完成通知
-notify-on-command-finish = unfocused
-notify-on-command-finish-action = notify,no-bell
-notify-on-command-finish-after = 10s
-
-# 剪贴板体验优化
-clipboard-trim-trailing-spaces = true
-
-# 呼出式终端默认行为
-quick-terminal-position = top
-quick-terminal-size = 35%

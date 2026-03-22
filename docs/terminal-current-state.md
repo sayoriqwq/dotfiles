@@ -4,11 +4,11 @@
 
 ## 当前基线
 
-- 主终端：`wezterm`
+- 主终端：`ghostty`
 - 默认 shell：`fish`
 - dotfiles 管理器：`chezmoi`
 - `Node.js` / `Bun` 管理器：`mise`
-- 辅助终端：`ghostty`，按 zero-config 模式使用
+- 保留终端：`wezterm`，用于兼容 / 回退
 
 ## 核心工具
 
@@ -21,19 +21,17 @@
 - 搜索与 diff：`rg`、`delta`、`jq`
 - 辅助工具：`thefuck`
 
-## 非基线项
-
-- 当前不纳入基线：`direnv`
-- 明确不再采用：`kaku`
-
 ## 受管状态
 
-- 当前受管：`~/.config/fish/config.fish`、`~/.wezterm.lua`、`~/.gitconfig`、`~/.hushlogin`
+- 当前受管：`~/.config/fish/config.fish`、`~/.config/ghostty/config`、`~/.wezterm.lua`、`~/.gitconfig`、`~/.hushlogin`
 - 当前受管：`~/.config/starship.toml`、`~/.config/atuin/config.toml`、`~/HOME.md`
-- 默认忽略：`~/.config/ghostty/config`、`~/.zshrc`
+- 默认忽略：`~/.zshrc`
 - 默认仅保留在 repo 内的文档：`README.md` 与 `docs/`
 - 单独受管的 Markdown：`~/HOME.md`
 
-## 当前结论
+## 当前约束
 
-当前方向是 `WezTerm + Fish + chezmoi`；`fish` 已经成为默认 shell，`zsh` 配置仅在仓库中保留作为回退参考，默认不再受管。
+- 当前方向是 `Ghostty + Fish + chezmoi`
+- `WezTerm` 配置仍然保留并受管，但不再作为主终端基线
+- `zsh` 配置仅在仓库中保留作为回退参考，默认不再受管
+- `direnv` 不是默认基线，除非用户明确要求，不要把它写成必需项

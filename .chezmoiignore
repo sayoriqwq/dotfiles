@@ -1,8 +1,8 @@
-# 仓库文档只保留在 source repo，不写入家目录。
+# 仓库说明文档只保留在 source repo，不写入家目录。
 *.md
 !HOME.md
 docs/
-# Ghostty 默认保持 zero-config sidecar。
-.config/ghostty/config
 # 保留 zsh 配置作为回退参考，但默认不再受管。
 .zshrc
+# 仓库元数据不写入家目录。
+.gitignore

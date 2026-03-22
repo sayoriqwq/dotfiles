@@ -7,12 +7,14 @@
 - 这是一个由 `chezmoi` 管理的 dotfiles 仓库
 - 修改配置时，优先修改仓库中的源文件，不直接把目标家目录文件当作真相来源
 - 任何终端、shell、prompt、CLI 工具相关改动，都要同时检查文档是否需要更新
+- 文档只描述当前状态、当前约束和稳定入口，不记录整理过程
 
 ## 文档维护规则
 
 当改动影响以下任一内容时，必须同步更新对应文档：
 
 - 项目入口或文档导航变化：更新 `README.md`
+- `docs/` 内部导航或文档分层变化：更新 `docs/README.md`
 - 受管文件、忽略策略、使用方式变化：更新 `docs/chezmoi.md`
 - 终端基线、采用结论、受管状态变化：更新 `docs/terminal-current-state.md`
 
@@ -20,10 +22,10 @@
 
 ## 终端相关约束
 
-- 保持 WezTerm 为主终端
-- 保持 Zsh 为默认 shell
-- Ghostty 目前是 zero-config sidecar，不要默认恢复其托管配置
-- 不要重新引入 Kaku
+- 保持 Ghostty 为主终端
+- 保持 Fish 为默认 shell
+- WezTerm 当前保留为兼容 / 回退终端，不要再把它写成主基线
+- 不要求把 WezTerm 的快捷键体系逐项迁移到 Ghostty，除非用户明确要求
 - `mise` 是当前 Node.js 和 Bun 的基线管理方式
 - `direnv` 当前不是默认基线，除非用户明确要求，不要把它写成必需项
 
@@ -34,4 +36,5 @@
 - 文档中的工具列表和当前实际状态一致
 - `docs/chezmoi.md` 与实际受管文件一致
 - `README.md` 的入口链接有效
+- `docs/README.md` 的文档导航有效
 - 如果新增或迁移了配置，确认对应源文件已经进入 `chezmoi` 管理
