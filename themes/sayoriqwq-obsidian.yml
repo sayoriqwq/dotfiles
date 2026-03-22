@@ -83,7 +83,7 @@ ansi:
   - "#121212" # 0: black
   - "#CF6679" # 1: red
   - "#81C784" # 2: green
-  - "#BDBDBD" # 3: yellow
+  - "#D4A373" # 3: yellow (Aligned with intent.warning)
   - "#64B5F6" # 4: blue
   - "#A291B5" # 5: magenta
   - "#76C1E1" # 6: cyan
@@ -91,7 +91,7 @@ ansi:
   - "#454545" # 8: bright black
   - "#FF8A80" # 9: bright red
   - "#B9F6CA" # 10: bright green
-  - "#FFFFFF" # 11: bright yellow
+  - "#E6C280" # 11: bright yellow (A brighter, softer sand/gold)
   - "#82B1FF" # 12: bright blue
   - "#C1B1D1" # 13: bright magenta
   - "#99D6EA" # 14: bright cyan
