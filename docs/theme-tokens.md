@@ -37,11 +37,18 @@
 
 ### Fish Shell 语法高亮
 Fish 的颜色不由终端调色板接管，而是直接将上述 Token 映射为 HEX 写入 `zz-theme-tokens.fish`。
+除颜色映射外，需保留 Fish 内建的交互提示修饰符，避免语义统一后削弱可感知性。
 **核心映射范例：**
 - 普通命令 (`command`) -> `intent.success`
 - 非法命令 (`error`) -> `intent.danger`
-- 管道/重定向 (`operator`) -> `intent.structure`
+- 管道/重定向 (`operator` / `redirection`) -> `intent.structure`
+- 有效路径 (`valid_path`) -> `text.primary` + `--underline`
+- 搜索匹配 / 选区 (`search_match` / `selection`) -> `text.primary` + 背景强调 + `--bold`
+- 补全前缀 (`pager_color_prefix`) -> `text.primary` + `--bold --underline`
+- 补全描述 (`pager_color_description`) -> `text.primary` + `--italics`
 - 补全菜单背景 (`pager_color_selected_background`) -> `bg.surface`
+
+> 说明：Fish 4.5 已不再使用 `fish_color_match`，不应继续把它当作有效的主题入口。
 
 ### Starship 提示符
 充分利用 `$before_root_path` (仓库外) 和 `$path` (仓库内)，配合 Token 实现沉浸式路径引导：

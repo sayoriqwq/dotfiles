@@ -8,6 +8,7 @@
 |---|---|---|
 | `~/.config/ghostty/config` | `dot_config/ghostty/config` | Ghostty (主终端) |
 | `~/.config/fish/config.fish` | `dot_config/fish/config.fish` | Fish (主 Shell) |
+| `~/.config/fish/conf.d/*.fish` | `dot_config/fish/conf.d/` | Fish 语义化高亮与共享初始化片段 |
 | `~/.config/fish/functions/*.fish` | `dot_config/fish/functions/` | Fish 问候语、禅意短句与辅助函数 |
 | `~/.config/starship.toml` | `dot_config/starship.toml` | 提示符 |
 | `~/.config/atuin/config.toml` | `dot_config/atuin/config.toml` | 历史记录搜索 |
