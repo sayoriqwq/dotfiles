@@ -10,6 +10,11 @@ fish_add_path --path --move --prepend \
 
 fzf --fish | source
 zoxide init fish --cmd cd | source
+
+function cd --wraps=__zoxide_z --description 'zoxide-backed cd with fallback notice'
+    __sayori_cd $argv
+end
+
 atuin init fish --disable-up-arrow | source
 starship init fish | source
 env TF_SHELL=fish thefuck --alias | source
