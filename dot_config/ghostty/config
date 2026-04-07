@@ -17,5 +17,3 @@ window-padding-x = 20
 background-opacity = 0.95
 background-opacity-cells = true
 background-blur = 10
-
-keybind = global:cmd+backquote=toggle_quick_terminal
