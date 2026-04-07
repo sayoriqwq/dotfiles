@@ -7,6 +7,7 @@
 | 目标路径 | 仓库源路径 | 职能 |
 |---|---|---|
 | `~/.config/ghostty/config` | `dot_config/ghostty/config` | Ghostty (主终端) |
+| `~/.config/cmux/settings.json` | `dot_config/cmux/settings.json` | cmux 工作台设置 |
 | `~/.config/fish/config.fish` | `dot_config/fish/config.fish` | Fish (主 Shell) |
 | `~/.config/fish/conf.d/*.fish` | `dot_config/fish/conf.d/` | Fish 语义化高亮与共享初始化片段 |
 | `~/.config/fish/functions/*.fish` | `dot_config/fish/functions/` | Fish 问候控制与辅助函数 |
@@ -32,6 +33,11 @@
 chezmoi edit ~/.config/ghostty/config
 # (此时打开的是仓库源文件)
 chezmoi apply ~/.config/ghostty/config
+```
+
+```bash
+chezmoi edit ~/.config/cmux/settings.json
+chezmoi apply ~/.config/cmux/settings.json
 ```
 
 **将外部修改同步回仓库：**

@@ -4,11 +4,12 @@
 
 ## 核心基调
 - **主终端**: [Ghostty](https://ghostty.org/)
+- **多工作区工作台**: [cmux](https://cmux.com/) (可选，复用 Ghostty 基线)
 - **主 Shell**: Fish
 - **备用回退**: [WezTerm](https://wezfurlong.org/wezterm/) + Zsh
 - **环境管理**: Chezmoi (Dotfiles), Mise (Node.js/Bun)
 
-整个终端环境基于一套名为 `sayoriqwq-obsidian` 的低饱和度设计系统。所有组件（包括 Starship 提示符、Fish 语法高亮、Ghostty 与 WezTerm 主题）均严格对齐该 Token 体系，确保长时间使用的视觉沉浸感。
+整个终端环境基于一套名为 `sayoriqwq-obsidian` 的低饱和度设计系统。所有组件（包括 Starship 提示符、Fish 语法高亮、Ghostty / cmux / WezTerm 的终端呈现）均严格对齐该 Token 体系，确保长时间使用的视觉沉浸感。
 
 ## 快速开始
 
