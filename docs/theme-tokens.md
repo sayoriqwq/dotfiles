@@ -1,7 +1,7 @@
 # 主题与 Token 架构体系
 
 > **核心原则**：所有的颜色都必须具有明确的语义。绝不写死“红色”或“蓝色”，只使用 `intent.danger` 或 `intent.info`。
-> **真相来源**：`themes/sayoriqwq-obsidian.yml`
+> **语义主题源**：`themes/sayoriqwq-obsidian.yml`（供本仓库尚未迁移的消费者使用）
 
 ## 1. 语义 Token 基线
 为保障“禅意”与低视觉疲劳，我们在基础的 ANSI 16 色之上，抽象出了以下业务级 Token：
@@ -58,5 +58,5 @@ Starship 的实际配置由 `nix-config` 的 Home Manager 层生成；本节记�
 - 分支名称 -> `intent.accent`
 
 ### Ghostty 与 WezTerm
-- **Ghostty**：通过静态的 `sayoriqwq-obsidian` 主题文件，仅消费基础的 ANSI 色谱与窗口背景色。
+- **Ghostty**：静态配置与 `sayoriqwq-obsidian` 主题映射已迁移至 `nix-config` 的 Home Manager 模块；本仓库不再部署对应目标文件。
 - **WezTerm**：通过 Chezmoi 的 `.tmpl` 模板动态解析 YAML 真相来源，消灭配置硬编码。

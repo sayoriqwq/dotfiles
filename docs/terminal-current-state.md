@@ -6,7 +6,7 @@
 - **主终端**：Ghostty (默认集成 Fish)
 - **工作台层**：cmux (复用 Ghostty 渲染基线，提供工作区 / 侧边栏 / 内置浏览器)
 - **备用终端**：WezTerm (默认集成 Zsh，作兼容回退)
-- **环境配置**：Home Manager 管理 Fish、Git、Starship 与通用 CLI；Chezmoi 管理终端和应用 Dotfiles
+- **环境配置**：Home Manager 管理 Ghostty、Fish、Git、Starship 与通用 CLI；Chezmoi 管理其余应用 Dotfiles
 - **开发环境**：Mise (管理 Node.js/Bun 等)
 
 ## 核心工具集
@@ -21,14 +21,14 @@
 | **代码搜索** | `rg`, `delta`, `jq` | 高性能文本与数据处理 |
 
 ## 管理策略
-- **Home Manager**：Fish、Starship、Git、Helix、tmux、direnv/nix-direnv 与通用 CLI。
-- **Chezmoi**：Ghostty、cmux、Atuin 可写配置、WezTerm、SSH (`hushlogin`) 及 `HOME.md`。
+- **Home Manager**：Ghostty、Fish、Starship、Git、Helix、tmux、direnv/nix-direnv 与通用 CLI。
+- **Chezmoi**：cmux、Atuin 可写配置、WezTerm、SSH (`hushlogin`) 及 `HOME.md`。
 - **动态模板**：`wezterm.lua.tmpl` (实时拉取主题源配置)。
 - **非受管/忽略**：`.zshrc` (仅作回退参考)。
-- **状态边界**：Atuin databases/key、Fish universal variables、GitHub auth、history 与 cache 保持为本机可写数据。
+- **状态边界**：Atuin databases/key、Ghostty history/session、Fish universal variables、GitHub auth、history 与 cache 保持为本机可写数据。
 
 ## 设计与主题约束
-1. **单一真相来源 (SSOT)**：所有终端颜色必须来源于 `themes/sayoriqwq-obsidian.yml`。
+1. **单一目标所有者**：Ghostty 的静态配置与主题映射以 `nix-config` 为唯一声明来源；本仓库的 YAML 继续服务尚未迁移的消费者。
 2. **终端职责分离**：Ghostty 负责终端基线 ANSI 色、字体和窗体外观；cmux 负责工作区、侧边栏、浏览器与快捷键层；Fish 与 Starship 的语义级颜色由 `nix-config` 的 Home Manager 声明。
 3. **交互提示不可弱化**：Fish 的语义映射除颜色外，还需保留其内建修饰符提示，例如有效路径下划线、补全前缀加粗下划线、搜索匹配与选区加粗。
 4. **极简体验**：按需显示，不打扰，无弹窗。`direnv` 与 `nix-direnv` 由 Home Manager 提供，但项目仍需显式 `direnv allow`。
