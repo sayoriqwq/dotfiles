@@ -7,9 +7,9 @@
 - **多工作区工作台**: [cmux](https://cmux.com/) (可选，复用 Ghostty 基线)
 - **主 Shell**: Fish
 - **备用回退**: [WezTerm](https://wezfurlong.org/wezterm/) + Zsh
-- **环境管理**: Home Manager (Fish/Git/Starship/CLI), Chezmoi (终端与应用 Dotfiles), Mise (Node.js/Bun)
+- **环境管理**: Home Manager (Ghostty/Fish/Git/Starship/CLI), Chezmoi (其余应用 Dotfiles), Mise (Node.js/Bun)
 
-整个终端环境基于一套名为 `sayoriqwq-obsidian` 的低饱和度设计系统。此仓库保留主题源与终端应用映射；Starship 提示符和 Fish 语法高亮由 `nix-config` 的 Home Manager 声明消费同一语义基线，避免两个配置系统拥有同一路径。
+整个终端环境基于一套名为 `sayoriqwq-obsidian` 的低饱和度设计系统。此仓库保留语义主题源与尚未迁移的应用映射；Ghostty、Starship 提示符和 Fish 语法高亮由 `nix-config` 的 Home Manager 声明，避免两个配置系统拥有同一路径。
 
 ## 快速开始
 
