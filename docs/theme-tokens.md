@@ -36,7 +36,7 @@
 ## 2. 终端侧的实现映射
 
 ### Fish Shell 语法高亮
-Fish 的颜色不由终端调色板接管，而是直接将上述 Token 映射为 HEX 写入 `zz-theme-tokens.fish`。
+Fish 的颜色不由终端调色板接管。实际 HEX 映射由 `nix-config` 的 `modules/home/common.nix` 通过 Home Manager 声明；本仓库保留语义 Token 与跨终端设计依据，不再部署 `zz-theme-tokens.fish`。
 除颜色映射外，需保留 Fish 内建的交互提示修饰符，避免语义统一后削弱可感知性。
 **核心映射范例：**
 - 普通命令 (`command`) -> `intent.success`
@@ -51,6 +51,7 @@ Fish 的颜色不由终端调色板接管，而是直接将上述 Token 映射�
 > 说明：Fish 4.5 已不再使用 `fish_color_match`，不应继续把它当作有效的主题入口。
 
 ### Starship 提示符
+Starship 的实际配置由 `nix-config` 的 Home Manager 层生成；本节记录其稳定视觉语义。
 充分利用 `$before_root_path` (仓库外) 和 `$path` (仓库内)，配合 Token 实现沉浸式路径引导：
 - 目录路径前缀 -> `text.muted`
 - 当前 Git 仓库名及内部路径 -> `intent.info`

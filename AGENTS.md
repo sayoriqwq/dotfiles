@@ -5,7 +5,8 @@
 ## 基本原则
 
 - 这是一个由 `chezmoi` 管理的 dotfiles 仓库
-- 修改配置时，优先修改仓库中的源文件，不直接把目标家目录文件当作真相来源
+- 修改 Chezmoi 负责的配置时，优先修改仓库中的源文件，不直接把目标家目录文件当作真相来源
+- Fish、Git 与 Starship 已由 `nix-config` 的 Home Manager 层接管，不要在本仓库重新建立重复所有权
 - 任何终端、shell、prompt、CLI 工具相关改动，都要同时检查文档是否需要更新
 - 文档只描述当前状态、当前约束和稳定入口，不记录整理过程
 
@@ -27,7 +28,7 @@
 - WezTerm 当前保留为兼容 / 回退终端，不要再把它写成主基线
 - 不要求把 WezTerm 的快捷键体系逐项迁移到 Ghostty，除非用户明确要求
 - `mise` 是当前 Node.js 和 Bun 的基线管理方式
-- `direnv` 当前不是默认基线，除非用户明确要求，不要把它写成必需项
+- `direnv` 与 `nix-direnv` 当前由 Home Manager 提供；项目目录仍需显式 `direnv allow`，项目依赖不得放进全局 profile
 
 ## 改动完成前的检查
 
@@ -37,7 +38,7 @@
 - `docs/chezmoi.md` 与实际受管文件一致
 - `README.md` 的入口链接有效
 - `docs/README.md` 的文档导航有效
-- 如果新增或迁移了配置，确认对应源文件已经进入 `chezmoi` 管理
+- 如果新增或迁移的是 Chezmoi 职责内配置，确认对应源文件已经进入 `chezmoi` 管理；Home Manager 职责内配置则在 `nix-config` 验证
 
 ## 设计原则 (Design Context)
 

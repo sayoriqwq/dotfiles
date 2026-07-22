@@ -1,6 +1,6 @@
 # Chezmoi 管理指南
 
-> 核心原则：**此仓库是真相来源 (SSOT)**。请勿直接修改家目录文件，所有变更必须通过 Chezmoi。
+> 核心原则：**此仓库是 Chezmoi 职责范围内的真相来源**。Fish、Git、Starship 与通用 CLI 已由 `nix-config` 的 Home Manager 层接管；一个目标路径只能有一个配置所有者。
 
 ## 核心受管清单
 
@@ -8,16 +8,21 @@
 |---|---|---|
 | `~/.config/ghostty/config` | `dot_config/ghostty/config` | Ghostty (主终端) |
 | `~/.config/cmux/settings.json` | `dot_config/cmux/settings.json` | cmux 工作台设置 |
-| `~/.config/fish/config.fish` | `dot_config/fish/config.fish` | Fish (主 Shell) |
-| `~/.config/fish/conf.d/*.fish` | `dot_config/fish/conf.d/` | Fish 语义化高亮与共享初始化片段 |
-| `~/.config/fish/functions/*.fish` | `dot_config/fish/functions/` | Fish 问候控制与辅助函数 |
-| `~/.config/starship.toml` | `dot_config/starship.toml` | 提示符 |
 | `~/.config/atuin/config.toml` | `dot_config/atuin/config.toml` | 历史记录搜索 |
 | `~/.wezterm.lua` | `dot_wezterm.lua.tmpl` | WezTerm (备用终端，动态读取主题) |
-| `~/.gitconfig` | `dot_gitconfig` | Git 全局配置 |
 | `~/HOME.md` | `HOME.md` | 主页索引 |
 
 *(注：主题文件映射见 [主题与 Token 架构体系](./theme-tokens.md))*
+
+## Home Manager 所有权边界
+
+以下目标不再由 Chezmoi 管理，其声明位于 `nix-config`：
+
+- `~/.config/fish/config.fish`、相关 `conf.d` 与 functions；
+- `~/.config/starship.toml`；
+- Git XDG config、global ignore 与 credential helper。
+
+Git identity 保留在本机私有 `~/.config/git/identity.inc`，不进入两个仓库。Atuin config/data、Fish universal variables 与 GitHub auth 等可变状态不由 Home Manager 链接进 Nix Store。不要对 Home Manager 拥有的路径运行 `chezmoi add`、`re-add` 或 `apply`。
 
 ## 仓库保留文件
 

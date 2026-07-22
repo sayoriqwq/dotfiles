@@ -42,7 +42,6 @@
 | `.console-ninja/` | Console Ninja 的日志和状态目录。 |
 | `.docker/` | Docker 客户端用户级配置目录。 |
 | `.ghcup/` | Haskell `ghcup` 的工具链目录，包含 `ghc`、`hls`、缓存和可执行文件。 |
-| `.gitconfig` | Git 用户级配置。 |
 | `.gnupg/` | GnuPG 密钥、代理和加密相关配置目录。 |
 | `.hushlogin` | 抑制登录 shell 欢迎信息的标记文件。 |
 | `.local/` | XDG 本地数据目录，当前包含 `mise`、本地二进制和部分应用数据。 |
