@@ -20,9 +20,9 @@
 - `~/.config/starship.toml`；
 - Git XDG config、global ignore 与 credential helper。
 - `~/.config/ghostty/config` 与 `~/.config/ghostty/themes/sayoriqwq-obsidian`。
-- `~/.wezterm.lua`、`~/.zshrc`、`~/.zprofile` 与 `~/.zshenv`。
+- 旧 `~/.wezterm.lua`、新的 `~/.config/wezterm/`，以及 `~/.zshrc`、`~/.zprofile` 与 `~/.zshenv`。
 
-Git identity 保留在本机私有 `~/.config/git/identity.inc`，不进入两个仓库。Atuin config/data、Ghostty history/session、Fish universal variables、Zsh history 与 GitHub auth 等可变状态不由 Home Manager 链接进 Nix Store。不要对 Home Manager 拥有的路径运行 `chezmoi add`、`re-add` 或 `apply`。
+Ghostty 与 WezTerm 应用本体也由 Home Manager/Nix 安装，不再由本仓库或 Homebrew 声明。Git identity 保留在本机私有 `~/.config/git/identity.inc`，不进入两个仓库。Atuin config/data、终端 session、Fish universal variables、Zsh history 与 GitHub auth 等可变状态不由 Home Manager 链接进 Nix Store。不要对 Home Manager 拥有的路径运行 `chezmoi add`、`re-add` 或 `apply`。
 
 ## 仓库保留文件
 
