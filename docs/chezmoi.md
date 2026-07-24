@@ -1,6 +1,6 @@
 # Chezmoi 管理指南
 
-> 核心原则：**此仓库是 Chezmoi 职责范围内的真相来源**。Ghostty、Fish、Git、Starship 与通用 CLI 已由 `nix-config` 的 Home Manager 层接管；一个目标路径只能有一个配置所有者。
+> 核心原则：**此仓库是 Chezmoi 职责范围内的真相来源**。Ghostty/Fish、WezTerm/Zsh、Git、Starship 与通用 CLI 已由 `nix-config` 的 Home Manager 层接管；一个目标路径只能有一个配置所有者。
 
 ## 核心受管清单
 
@@ -8,7 +8,6 @@
 |---|---|---|
 | `~/.config/cmux/settings.json` | `dot_config/cmux/settings.json` | cmux 工作台设置 |
 | `~/.config/atuin/config.toml` | `dot_config/atuin/config.toml` | 历史记录搜索 |
-| `~/.wezterm.lua` | `dot_wezterm.lua.tmpl` | WezTerm (备用终端，动态读取主题) |
 | `~/HOME.md` | `HOME.md` | 主页索引 |
 
 *(注：主题文件映射见 [主题与 Token 架构体系](./theme-tokens.md))*
@@ -21,8 +20,9 @@
 - `~/.config/starship.toml`；
 - Git XDG config、global ignore 与 credential helper。
 - `~/.config/ghostty/config` 与 `~/.config/ghostty/themes/sayoriqwq-obsidian`。
+- 旧 `~/.wezterm.lua`、新的 `~/.config/wezterm/`，以及 `~/.zshrc`、`~/.zprofile` 与 `~/.zshenv`。
 
-Git identity 保留在本机私有 `~/.config/git/identity.inc`，不进入两个仓库。Atuin config/data、Ghostty history/session、Fish universal variables 与 GitHub auth 等可变状态不由 Home Manager 链接进 Nix Store。不要对 Home Manager 拥有的路径运行 `chezmoi add`、`re-add` 或 `apply`。
+Ghostty 与 WezTerm 应用本体也由 Home Manager/Nix 安装，不再由本仓库或 Homebrew 声明。Git identity 保留在本机私有 `~/.config/git/identity.inc`，不进入两个仓库。Atuin config/data、终端 session、Fish universal variables、Zsh history 与 GitHub auth 等可变状态不由 Home Manager 链接进 Nix Store。不要对 Home Manager 拥有的路径运行 `chezmoi add`、`re-add` 或 `apply`。
 
 ## 仓库保留文件
 
