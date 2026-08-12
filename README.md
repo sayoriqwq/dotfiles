@@ -1,12 +1,30 @@
-# Dotfiles archive
+# Sayori's Dotfiles
 
-本仓库已完成退役，不再部署或管理任何本机配置。
+使用 [Chezmoi](https://www.chezmoi.io/) 构建的极简、禅意 macOS 个人终端环境。
 
-## 当前事实来源
+## 核心基调
+- **主终端**: [Ghostty](https://ghostty.org/)
+- **多工作区工作台**: [cmux](https://cmux.com/) (可选，复用 Ghostty 基线)
+- **主 Shell**: Fish
+- **备用回退**: [WezTerm](https://wezfurlong.org/wezterm/) + Zsh
+- **环境管理**: Home Manager/Nix (Ghostty/Fish、WezTerm/Zsh、Git/Starship/CLI), Chezmoi (其余应用 Dotfiles), Mise (Node.js/Bun/pnpm)
 
-- [`nix-config`](https://github.com/sayoriqwq/nix-config)：软件、终端、Shell、CLI 与 Home Manager / nix-darwin 配置。
-- [`yume-design`](https://github.com/sayoriqwq/yume-design)：`sayoriqwq-obsidian` 的颜色、语义 Token 与设计原则。
+整个终端环境基于一套名为 `sayoriqwq-obsidian` 的低饱和度设计系统。Ghostty 与 WezTerm 的权威主题值位于 `nix-config`，本仓库的 YAML 只继续服务尚未迁移的消费者；两套终端与 Shell 环境、Starship 提示符和 Fish 语法高亮均由 Home Manager 声明，避免两个配置系统拥有同一路径。
 
-不要从本仓库运行 `chezmoi init`、`chezmoi apply`，也不要将历史文件重新作为活动配置。需要追溯迁移前实现时，使用 Git 历史中的不可变提交。
+## 快速开始
 
-本地与远端仓库只保留审计价值；远端应保持只读归档，而不是删除，以维持 `nix-config` 迁移记录中的历史链接。
+```bash
+# 全新机器一键初始化
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply sayoriqwq
+```
+
+## 文档指引
+> 详见 [docs/README.md](./docs/README.md) 导航页
+
+- [终端与工具链](./docs/terminal-current-state.md): 了解当前使用的现代 CLI 工具替代品 (如 eza, zoxide, fd)。
+- [Chezmoi 管理指南](./docs/chezmoi.md): 了解配置的同步规则、文件源路径及日常增改查工作流。
+- [主题与 Token 体系](./docs/theme-tokens.md): 了解本仓库如何实现“单一真相来源”的全局终端着色。
+
+## 设计原则
+本仓库维护遵循 [`.impeccable.md`](./.impeccable.md) 中的设计纲领：
+**沉浸、专注、禅意极简**。任何针对 UI 的 PR 与配置修改，都必须确保低视觉噪音和绝对的语义一致性。

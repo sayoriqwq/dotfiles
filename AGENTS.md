@@ -1,8 +1,50 @@
-# Archived repository
+# AGENTS.md
 
-本仓库是只读历史档案，不再拥有运行时配置。
+本文件定义此仓库中 agent 的基础协作规则。
 
-- 当前系统声明在 `/Users/sayori/Desktop/nix-config`。
-- 当前视觉设计源在 `/Users/sayori/Desktop/yume-design`。
-- 对历史实现只做读取与引用；任何恢复、再部署或重新采用都必须在当前所有者仓库中重新设计和授权。
-- 维护本档案时只更新归档元数据，不新增 Chezmoi source、配置副本或面向当前状态的文档。
+## 基本原则
+
+- 这是一个由 `chezmoi` 管理的 dotfiles 仓库
+- 修改 Chezmoi 负责的配置时，优先修改仓库中的源文件，不直接把目标家目录文件当作真相来源
+- Fish、Git 与 Starship 已由 `nix-config` 的 Home Manager 层接管，不要在本仓库重新建立重复所有权
+- 任何终端、shell、prompt、CLI 工具相关改动，都要同时检查文档是否需要更新
+- 文档只描述当前状态、当前约束和稳定入口，不记录整理过程
+
+## 文档维护规则
+
+当改动影响以下任一内容时，必须同步更新对应文档：
+
+- 项目入口或文档导航变化：更新 `README.md`
+- `docs/` 内部导航或文档分层变化：更新 `docs/README.md`
+- 受管文件、忽略策略、使用方式变化：更新 `docs/chezmoi.md`
+- 终端基线、采用结论、受管状态变化：更新 `docs/terminal-current-state.md`
+
+不要只改配置不改文档，也不要只写新文档而保留明显过期的旧描述。
+
+## 终端相关约束
+
+- 保持 Ghostty 为主终端
+- 保持 Fish 为默认 shell
+- WezTerm 当前保留为兼容 / 回退终端，不要再把它写成主基线
+- 不要求把 WezTerm 的快捷键体系逐项迁移到 Ghostty，除非用户明确要求
+- `mise` 是当前 Node.js 和 Bun 的基线管理方式
+- `direnv` 与 `nix-direnv` 当前由 Home Manager 提供；项目目录仍需显式 `direnv allow`，项目依赖不得放进全局 profile
+
+## 改动完成前的检查
+
+在结束前，至少做一次下面的核对：
+
+- 文档中的工具列表和当前实际状态一致
+- `docs/chezmoi.md` 与实际受管文件一致
+- `README.md` 的入口链接有效
+- `docs/README.md` 的文档导航有效
+- 如果新增或迁移的是 Chezmoi 职责内配置，确认对应源文件已经进入 `chezmoi` 管理；Home Manager 职责内配置则在 `nix-config` 验证
+
+## 设计原则 (Design Context)
+
+设计相关工作需遵循 `.impeccable.md` 中的设计上下文，其核心原则为：
+
+1. **沉浸与专注**：调整对比度和视觉元素以最大化沉浸感和专注力，减少视觉干扰。
+2. **视觉舒适**：优先使用低饱和度色彩，避免刺眼高亮，防止长时间使用导致视觉疲劳。
+3. **禅意极简**：保持界面整洁，颜色和 Token 必须有清晰语义，避免信息过载。
+4. **语义一致性**：严格遵循 `tokens.text`、`tokens.intent` 等已定义语义 Token，确保跨终端应用的视觉统一。
