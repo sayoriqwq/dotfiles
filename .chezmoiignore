@@ -1,7 +1,0 @@
-# 仓库说明文档只保留在 source repo，不写入家目录。
-*.md
-!HOME.md
-docs/
-themes/
-# 仓库元数据不写入家目录。
-.gitignore
